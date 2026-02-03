@@ -29,3 +29,4 @@ Thumbs.db
 *.swo
 
 netlify-env-variables.txt
+NETLIFY_ENV_VARIABLES.md
