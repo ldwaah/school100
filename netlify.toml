@@ -1,7 +1,7 @@
 [build]
   publish = "public"
   functions = "netlify/functions"
-  command = "npm run generate-manifest"
+  command = "npm install && npm run generate-manifest"
 
 [build.environment]
   NODE_VERSION = "18"

@@ -153,7 +153,9 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     
     try {
         // Use Netlify Function if available, otherwise fallback to Express route
-        const uploadUrl = window.location.hostname === 'localhost' ? '/upload' : '/.netlify/functions/upload';
+        // On Netlify, the redirect in netlify.toml handles /upload -> /.netlify/functions/upload
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const uploadUrl = isLocalhost ? '/upload' : '/upload'; // Netlify redirect will handle it
         const response = await fetch(uploadUrl, {
             method: 'POST',
             body: formData
