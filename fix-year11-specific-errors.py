@@ -13,9 +13,11 @@ def fix_year11_file(file_path):
         
         original_content = content
         
-        # Fix studentClas to studentClass
-        content = re.sub(r'studentClas', 'studentClass', content)
-        content = re.sub(r'StudentClas', 'StudentClass', content)
+        # Fix studentClas to studentClass (but not if it's already studentClass)
+        content = re.sub(r'studentClasss', 'studentClass', content)
+        content = re.sub(r'StudentClasss', 'StudentClass', content)
+        content = re.sub(r'studentClas\b', 'studentClass', content)
+        content = re.sub(r'StudentClas\b', 'StudentClass', content)
         
         # Fix autocomplete="of" to autocomplete="off"
         content = re.sub(r'autocomplete="of"', 'autocomplete="off"', content)

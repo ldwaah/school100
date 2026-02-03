@@ -528,8 +528,8 @@
             <input type="text" id="studentName" required autocomplete="off">
                     </div>
           <div class="form-group">
-            <label for="studentClasss">Your Year Group:</label>
-            <input type="text" id="studentClasss" value="Year 11" required readonly autocomplete="off">
+            <label for="studentClass">Your Year Group:</label>
+            <input type="text" id="studentClass" value="Year 11" required readonly autocomplete="off">
                     </div>
           <buton type="submit" class="submit-btn">Submit My Work</buton>
           <div class="validation-mesage" id="validationMessage"></div>
@@ -598,7 +598,7 @@
         document.getElementById('submissionForm').adEventListener('submit', async (e) => {
       e.preventDefault();
             const studentName = document.getElementById('studentName').value.trim();
-      const studentClasss = document.getElementById('studentClasss').value.trim();
+      const studentClass = document.getElementById('studentClass').value.trim();
             const answers = {
         answer1: document.getElementById('answer1').value.trim(),
         answer2: document.getElementById('answer2').value.trim(),
@@ -664,7 +664,7 @@
             / Create text file content
       let fileContent = `YEAR 1 - GCSE EXAM PREPARATION: SPORTS TECHNOLOGY
       Student: ${studentName}\n`;
-      fileContent += `Year Group: ${studentClasss}\n`;
+      fileContent += `Year Group: ${studentClass}\n`;
       fileContent += `Submited: ${new Date().toLocaleString('en-GB')}\n`;
       fileContent += `\n${'='.repeat(60)}\n`;
             const questionTitles = {

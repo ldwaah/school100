@@ -504,8 +504,8 @@
             <input type="text" id="studentName" required autocomplete="off">
                     </div>
           <div class="form-group">
-            <label for="studentClasss">Your Year Group:</label>
-            <input type="text" id="studentClasss" value="Year 11" required readonly autocomplete="off">
+            <label for="studentClass">Your Year Group:</label>
+            <input type="text" id="studentClass" value="Year 11" required readonly autocomplete="off">
                     </div>
           <buton type="submit" class="submit-btn">Submit My Work</buton>
           <div class="validation-mesage" id="validationMessage"></div>
@@ -555,7 +555,7 @@
         document.getElementById('submissionForm').adEventListener('submit', async (e) => {
       e.preventDefault();
             const studentName = document.getElementById('studentName').value.trim();
-      const studentClasss = document.getElementById('studentClasss').value.trim();
+      const studentClass = document.getElementById('studentClass').value.trim();
             const answers = {
         task1: document.getElementById('task1').value.trim(),
         task2: document.getElementById('task2').value.trim(),
@@ -614,7 +614,7 @@
       formData.append('subject', 'Maths-Practice');
             let fileContent = `YEAR 1 - GCSE EXAM PREPARATION: FRACTIONS
       Student: ${studentName}\n`;
-      fileContent += `Year Group: ${studentClasss}\n`;
+      fileContent += `Year Group: ${studentClass}\n`;
       fileContent += `Submited: ${new Date().toLocaleString('en-GB')}\n`;
       fileContent += `\n${'='.repeat(60)}\n`;
             const taskTitles = {
