@@ -11,24 +11,48 @@ const FOLDER_IDS = {
 
 // Initialize Google Drive client
 function getDriveClient() {
-    const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
-    const token = JSON.parse(process.env.GOOGLE_TOKEN);
-    
-    const { client_secret, client_id, redirect_uris } = credentials.installed || credentials.web;
-    const oauth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
-    oauth2Client.setCredentials(token);
-    
-    // Refresh token if expired
-    if (token.expiry_date && token.expiry_date < Date.now() && token.refresh_token) {
-        oauth2Client.refreshAccessToken().then(({ credentials: newCredentials }) => {
-            // Note: In production, you'd want to update the stored token
-            oauth2Client.setCredentials({ ...token, ...newCredentials });
-        }).catch(err => {
-            console.error('Token refresh failed:', err);
-        });
+    try {
+        if (!process.env.GOOGLE_CREDENTIALS || !process.env.GOOGLE_TOKEN) {
+            throw new Error('Google Drive credentials not configured');
+        }
+        
+        let credentials, token;
+        try {
+            credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+        } catch (e) {
+            throw new Error(`Failed to parse GOOGLE_CREDENTIALS: ${e.message}`);
+        }
+        
+        try {
+            token = JSON.parse(process.env.GOOGLE_TOKEN);
+        } catch (e) {
+            throw new Error(`Failed to parse GOOGLE_TOKEN: ${e.message}`);
+        }
+        
+        const { client_secret, client_id, redirect_uris } = credentials.installed || credentials.web;
+        
+        if (!client_id || !client_secret) {
+            throw new Error('Invalid Google credentials: missing client_id or client_secret');
+        }
+        
+        const oauth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris?.[0] || 'http://localhost');
+        oauth2Client.setCredentials(token);
+        
+        // Refresh token if expired
+        if (token.expiry_date && token.expiry_date < Date.now() && token.refresh_token) {
+            oauth2Client.refreshAccessToken().then(({ credentials: newCredentials }) => {
+                // Note: In production, you'd want to update the stored token
+                oauth2Client.setCredentials({ ...token, ...newCredentials });
+            }).catch(err => {
+                console.error('Token refresh failed:', err);
+            });
+        }
+        
+        return google.drive({ version: 'v3', auth: oauth2Client });
+    } catch (error) {
+        console.error('Error initializing Google Drive client:', error);
+        throw error;
     }
-    
-    return google.drive({ version: 'v3', auth: oauth2Client });
 }
 
 // Parse multipart form data
@@ -110,31 +134,31 @@ function parseMultipartForm(event) {
 }
 
 exports.handler = async (event, context) => {
-    // Handle CORS
-    if (event.httpMethod === 'OPTIONS') {
-        return {
-            statusCode: 200,
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type',
-                'Access-Control-Allow-Methods': 'POST, OPTIONS'
-            },
-            body: ''
-        };
-    }
-    
-    if (event.httpMethod !== 'POST') {
-        return {
-            statusCode: 405,
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ success: false, message: 'Method not allowed' })
-        };
-    }
-    
+    // Wrap everything in try-catch to ensure we always return JSON
     try {
+        // Handle CORS
+        if (event.httpMethod === 'OPTIONS') {
+            return {
+                statusCode: 200,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': 'Content-Type',
+                    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+                },
+                body: ''
+            };
+        }
+        
+        if (event.httpMethod !== 'POST') {
+            return {
+                statusCode: 405,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ success: false, message: 'Method not allowed' })
+            };
+        }
         // Check if Google Drive is configured
         if (!process.env.GOOGLE_CREDENTIALS || !process.env.GOOGLE_TOKEN) {
             return {
@@ -213,11 +237,17 @@ exports.handler = async (event, context) => {
             body: fileStream
         };
         
-        const response = await drive.files.create({
-            requestBody: fileMetadata,
-            media: media,
-            fields: 'id, name, webViewLink'
-        });
+        let response;
+        try {
+            response = await drive.files.create({
+                requestBody: fileMetadata,
+                media: media,
+                fields: 'id, name, webViewLink'
+            });
+        } catch (driveError) {
+            console.error('Google Drive API error:', driveError);
+            throw new Error(`Google Drive upload failed: ${driveError.message || 'Unknown error'}`);
+        }
         
         return {
             statusCode: 200,
@@ -237,6 +267,14 @@ exports.handler = async (event, context) => {
         };
     } catch (error) {
         console.error('Upload error:', error);
+        console.error('Error stack:', error.stack);
+        console.error('Error details:', {
+            message: error.message,
+            name: error.name,
+            code: error.code
+        });
+        
+        // Always return JSON, even on errors
         return {
             statusCode: 500,
             headers: {
@@ -245,7 +283,8 @@ exports.handler = async (event, context) => {
             },
             body: JSON.stringify({
                 success: false,
-                message: error.message || 'An error occurred during upload'
+                message: error.message || 'An error occurred during upload',
+                error: process.env.NODE_ENV === 'development' ? error.stack : undefined
             })
         };
     }

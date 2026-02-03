@@ -161,7 +161,18 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             body: formData
         });
         
-        const result = await response.json();
+        // Check if response is JSON before parsing
+        const contentType = response.headers.get('content-type');
+        let result;
+        
+        if (contentType && contentType.includes('application/json')) {
+            result = await response.json();
+        } else {
+            // If not JSON, try to get text and show error
+            const text = await response.text();
+            console.error('Non-JSON response:', text);
+            throw new Error(`Server returned an error. Status: ${response.status}. Please check the console for details.`);
+        }
         
         progressContainer.style.display = 'none';
         
