@@ -1,6 +1,43 @@
 const { google } = require('googleapis');
-const Busboy = require('busboy');
 const { Readable } = require('stream');
+
+// Use a simpler multipart parser that works better with Netlify Functions
+function parseMultipartSimple(body, boundary) {
+    const parts = body.split(`--${boundary}`);
+    const result = { file: null, fields: {} };
+    
+    for (const part of parts) {
+        if (!part || part.trim() === '--' || part.trim() === '') continue;
+        
+        const [headers, ...bodyParts] = part.split('\r\n\r\n');
+        if (!headers || !bodyParts.length) continue;
+        
+        const contentDisposition = headers.match(/Content-Disposition:.*name="([^"]+)"/);
+        if (!contentDisposition) continue;
+        
+        const fieldName = contentDisposition[1];
+        const bodyContent = bodyParts.join('\r\n\r\n').replace(/\r\n--$/, '').trim();
+        
+        // Check if it's a file
+        const filenameMatch = headers.match(/filename="([^"]+)"/);
+        if (filenameMatch) {
+            const filename = filenameMatch[1];
+            const contentTypeMatch = headers.match(/Content-Type:\s*([^\r\n]+)/);
+            const contentType = contentTypeMatch ? contentTypeMatch[1].trim() : 'application/octet-stream';
+            
+            result.file = {
+                buffer: Buffer.from(bodyContent, 'binary'),
+                filename: filename,
+                mimetype: contentType
+            };
+        } else {
+            // It's a regular field
+            result.fields[fieldName] = bodyContent;
+        }
+    }
+    
+    return result;
+}
 
 // Folder ID mapping from environment variables
 const FOLDER_IDS = {
@@ -57,132 +94,52 @@ async function getDriveClient() {
     }
 }
 
-// Parse multipart form data using Busboy
+// Parse multipart form data - using simple parser instead of Busboy
 function parseMultipartForm(event) {
     return new Promise((resolve, reject) => {
-        const contentType = event.headers['content-type'] || event.headers['Content-Type'];
-        if (!contentType || !contentType.includes('multipart/form-data')) {
-            reject(new Error('Invalid content type'));
-            return;
-        }
-        
-        // Parse boundary from content-type
-        const boundary = contentType.split('boundary=')[1];
-        if (!boundary) {
-            reject(new Error('No boundary found in content-type'));
-            return;
-        }
-        
-        const busboy = Busboy({ 
-            headers: { 
-                'content-type': contentType 
-            }
-        });
-        
-        const result = {
-            file: null,
-            fields: {}
-        };
-        
-        let fileProcessed = false;
-        let hasError = false;
-        
-        busboy.on('file', (fieldname, file, info) => {
-            if (hasError) return;
-            
-            const { filename, encoding, mimeType } = info;
-            const chunks = [];
-            
-            // Handle file stream - collect all chunks
-            file.on('data', (chunk) => {
-                if (chunk && Buffer.isBuffer(chunk)) {
-                    chunks.push(chunk);
-                }
-            });
-            
-            file.on('end', () => {
-                if (!hasError) {
-                    result.file = {
-                        buffer: Buffer.concat(chunks),
-                        filename: filename || 'upload',
-                        mimetype: mimeType || 'application/octet-stream'
-                    };
-                    fileProcessed = true;
-                }
-            });
-            
-            file.on('error', (err) => {
-                hasError = true;
-                reject(new Error(`File stream error: ${err.message}`));
-            });
-        });
-        
-        busboy.on('field', (fieldname, value, info) => {
-            if (!hasError) {
-                result.fields[fieldname] = value;
-            }
-        });
-        
-        busboy.on('finish', () => {
-            if (hasError) return;
-            
-            if (!fileProcessed && !result.file) {
-                reject(new Error('No file was processed'));
+        try {
+            const contentType = event.headers['content-type'] || event.headers['Content-Type'];
+            if (!contentType || !contentType.includes('multipart/form-data')) {
+                reject(new Error('Invalid content type'));
                 return;
             }
-            resolve(result);
-        });
-        
-        busboy.on('error', (err) => {
-            hasError = true;
-            reject(new Error(`Busboy error: ${err.message}`));
-        });
-        
-        // Convert body to buffer
-        // Netlify Functions base64-encode binary data, so we need to handle that
-        let bodyBuffer;
-        try {
+            
+            // Parse boundary from content-type
+            const boundaryMatch = contentType.match(/boundary=([^;]+)/);
+            if (!boundaryMatch) {
+                reject(new Error('No boundary found in content-type'));
+                return;
+            }
+            const boundary = boundaryMatch[1].trim();
+            
+            // Get body as string/buffer
+            let bodyString;
             if (event.body) {
                 if (event.isBase64Encoded) {
-                    // Netlify base64-encodes binary data
-                    bodyBuffer = Buffer.from(event.body, 'base64');
+                    bodyString = Buffer.from(event.body, 'base64').toString('binary');
                 } else if (typeof event.body === 'string') {
-                    // Try to detect if it's already base64 (multipart data often is)
-                    // If it contains non-printable chars, it's likely binary and should be base64 decoded
-                    try {
-                        // Try base64 first for multipart data
-                        bodyBuffer = Buffer.from(event.body, 'base64');
-                        // Verify it's valid base64 by checking if it decodes to something reasonable
-                        if (bodyBuffer.length === 0 && event.body.length > 0) {
-                            // Fallback to binary if base64 decode resulted in empty buffer
-                            bodyBuffer = Buffer.from(event.body, 'binary');
-                        }
-                    } catch (e) {
-                        // If base64 fails, try binary
-                        bodyBuffer = Buffer.from(event.body, 'binary');
-                    }
+                    bodyString = event.body;
                 } else if (Buffer.isBuffer(event.body)) {
-                    bodyBuffer = event.body;
+                    bodyString = event.body.toString('binary');
                 } else {
-                    bodyBuffer = Buffer.from(String(event.body), 'binary');
+                    bodyString = String(event.body);
                 }
             } else {
                 reject(new Error('No body in request'));
                 return;
             }
             
-            // Write entire body to busboy at once (synchronous)
-            // Busboy needs the complete multipart data to parse correctly
-            try {
-                busboy.write(bodyBuffer);
-                busboy.end();
-            } catch (writeErr) {
-                hasError = true;
-                reject(new Error(`Failed to write to busboy: ${writeErr.message}`));
+            // Use simple parser
+            const result = parseMultipartSimple(bodyString, boundary);
+            
+            if (!result.file) {
+                reject(new Error('No file was found in the request'));
+                return;
             }
-        } catch (parseError) {
-            hasError = true;
-            reject(new Error(`Failed to parse request body: ${parseError.message}`));
+            
+            resolve(result);
+        } catch (error) {
+            reject(new Error(`Failed to parse multipart form: ${error.message}`));
         }
     });
 }
