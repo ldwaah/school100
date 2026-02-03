@@ -57,7 +57,7 @@ async function getDriveClient() {
     }
 }
 
-// Parse multipart form data
+// Parse multipart form data using Busboy
 function parseMultipartForm(event) {
     return new Promise((resolve, reject) => {
         const contentType = event.headers['content-type'] || event.headers['Content-Type'];
@@ -66,41 +66,66 @@ function parseMultipartForm(event) {
             return;
         }
         
-        const busboy = Busboy({ headers: { 'content-type': contentType } });
+        // Parse boundary from content-type
+        const boundary = contentType.split('boundary=')[1];
+        if (!boundary) {
+            reject(new Error('No boundary found in content-type'));
+            return;
+        }
+        
+        const busboy = Busboy({ 
+            headers: { 
+                'content-type': contentType 
+            }
+        });
+        
         const result = {
             file: null,
             fields: {}
         };
         
         let fileProcessed = false;
+        let hasError = false;
         
         busboy.on('file', (fieldname, file, info) => {
+            if (hasError) return;
+            
             const { filename, encoding, mimeType } = info;
             const chunks = [];
             
+            // Handle file stream - collect all chunks
             file.on('data', (chunk) => {
-                chunks.push(chunk);
+                if (chunk && Buffer.isBuffer(chunk)) {
+                    chunks.push(chunk);
+                }
             });
             
             file.on('end', () => {
-                result.file = {
-                    buffer: Buffer.concat(chunks),
-                    filename: filename || 'upload',
-                    mimetype: mimeType || 'application/octet-stream'
-                };
-                fileProcessed = true;
+                if (!hasError) {
+                    result.file = {
+                        buffer: Buffer.concat(chunks),
+                        filename: filename || 'upload',
+                        mimetype: mimeType || 'application/octet-stream'
+                    };
+                    fileProcessed = true;
+                }
             });
             
             file.on('error', (err) => {
+                hasError = true;
                 reject(new Error(`File stream error: ${err.message}`));
             });
         });
         
         busboy.on('field', (fieldname, value, info) => {
-            result.fields[fieldname] = value;
+            if (!hasError) {
+                result.fields[fieldname] = value;
+            }
         });
         
         busboy.on('finish', () => {
+            if (hasError) return;
+            
             if (!fileProcessed && !result.file) {
                 reject(new Error('No file was processed'));
                 return;
@@ -109,29 +134,62 @@ function parseMultipartForm(event) {
         });
         
         busboy.on('error', (err) => {
+            hasError = true;
             reject(new Error(`Busboy error: ${err.message}`));
         });
         
-        // Convert body to buffer - handle different encodings
+        // Convert body to buffer
         let bodyBuffer;
-        if (event.body) {
-            if (event.isBase64Encoded) {
-                bodyBuffer = Buffer.from(event.body, 'base64');
-            } else if (typeof event.body === 'string') {
-                bodyBuffer = Buffer.from(event.body, 'binary');
-            } else if (Buffer.isBuffer(event.body)) {
-                bodyBuffer = event.body;
+        try {
+            if (event.body) {
+                if (event.isBase64Encoded) {
+                    bodyBuffer = Buffer.from(event.body, 'base64');
+                } else if (typeof event.body === 'string') {
+                    // For multipart, body should be binary
+                    bodyBuffer = Buffer.from(event.body, 'binary');
+                } else if (Buffer.isBuffer(event.body)) {
+                    bodyBuffer = event.body;
+                } else {
+                    bodyBuffer = Buffer.from(String(event.body), 'binary');
+                }
             } else {
-                bodyBuffer = Buffer.from(JSON.stringify(event.body), 'utf8');
+                reject(new Error('No body in request'));
+                return;
             }
-        } else {
-            reject(new Error('No body in request'));
-            return;
+            
+            // Write to busboy in chunks to avoid memory issues
+            const chunkSize = 64 * 1024; // 64KB chunks
+            let offset = 0;
+            
+            const writeChunk = () => {
+                if (hasError) return;
+                
+                if (offset < bodyBuffer.length) {
+                    const chunk = bodyBuffer.slice(offset, Math.min(offset + chunkSize, bodyBuffer.length));
+                    try {
+                        busboy.write(chunk);
+                        offset += chunkSize;
+                        // Use setImmediate to avoid blocking
+                        setImmediate(writeChunk);
+                    } catch (writeErr) {
+                        hasError = true;
+                        reject(new Error(`Failed to write to busboy: ${writeErr.message}`));
+                    }
+                } else {
+                    try {
+                        busboy.end();
+                    } catch (endErr) {
+                        hasError = true;
+                        reject(new Error(`Failed to end busboy: ${endErr.message}`));
+                    }
+                }
+            };
+            
+            writeChunk();
+        } catch (parseError) {
+            hasError = true;
+            reject(new Error(`Failed to parse request body: ${parseError.message}`));
         }
-        
-        // Create a readable stream from the buffer and pipe to busboy
-        const bodyStream = Readable.from(bodyBuffer);
-        bodyStream.pipe(busboy);
     });
 }
 
@@ -161,6 +219,7 @@ exports.handler = async (event, context) => {
                 body: JSON.stringify({ success: false, message: 'Method not allowed' })
             };
         }
+        
         // Check if Google Drive is configured
         if (!process.env.GOOGLE_CREDENTIALS || !process.env.GOOGLE_TOKEN) {
             return {
@@ -230,7 +289,7 @@ exports.handler = async (event, context) => {
             description: `Uploaded by: ${studentName}${assignmentTitle ? ` | Assignment: ${assignmentTitle}` : ''}`
         };
         
-        // Convert buffer to stream for Google Drive API (it expects a stream)
+        // Convert buffer to stream for Google Drive API
         const fileBuffer = Buffer.isBuffer(file.buffer) ? file.buffer : Buffer.from(file.buffer);
         const fileStream = Readable.from(fileBuffer);
         
@@ -291,4 +350,3 @@ exports.handler = async (event, context) => {
         };
     }
 };
-
