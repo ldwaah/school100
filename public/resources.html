@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100% Resources - School100</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resources-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>100% Resources</h1>
+            <p class="subtitle">Academic resources for independent learning</p>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </header>
+
+        <main>
+            <!-- Year Group Selection -->
+            <div class="subjects-grid">
+                <!-- Year 7 -->
+                <div class="subject-card english-card">
+                    <div class="subject-header">
+                        <h2>Year 7</h2>
+                        <span class="resource-count" id="year7-count">0 resources</span>
+                    </div>
+                    <div class="subject-categories">
+                        <button class="category-btn" onclick="showYearGroupResources('Year-7')">
+                            View All Year 7 Resources
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Year 8 -->
+                <div class="subject-card maths-card">
+                    <div class="subject-header">
+                        <h2>Year 8</h2>
+                        <span class="resource-count" id="year8-count">0 resources</span>
+                    </div>
+                    <div class="subject-categories">
+                        <button class="category-btn" onclick="showYearGroupResources('Year-8')">
+                            View All Year 8 Resources
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Year 9 -->
+                <div class="subject-card sport-card">
+                    <div class="subject-header">
+                        <h2>Year 9</h2>
+                        <span class="resource-count" id="year9-count">0 resources</span>
+                    </div>
+                    <div class="subject-categories">
+                        <button class="category-btn" onclick="showYearGroupResources('Year-9')">
+                            View All Year 9 Resources
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Year 10 -->
+                <div class="subject-card trust-card">
+                    <div class="subject-header">
+                        <h2>Year 10</h2>
+                        <span class="resource-count" id="year10-count">0 resources</span>
+                    </div>
+                    <div class="subject-categories">
+                        <button class="category-btn" onclick="showYearGroupResources('Year-10')">
+                            View All Year 10 Resources
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Year 11 -->
+                <div class="subject-card trust-card">
+                    <div class="subject-header">
+                        <h2>Year 11</h2>
+                        <span class="resource-count" id="year11-count">0 resources</span>
+                    </div>
+                    <div class="subject-categories">
+                        <button class="category-btn" onclick="showYearGroupResources('Year-11')">
+                            View All Year 11 Resources
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources Display Area -->
+            <div id="resources-display" class="resources-display" style="display: none;">
+                <div class="resources-header">
+                    <h3 id="resources-title">Resources</h3>
+                    <button class="close-btn" onclick="closeResources()">×</button>
+                </div>
+                <div id="resources-list" class="resources-list">
+                    <!-- Resources will be loaded here -->
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 EvolveOne Education. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="resources-app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCSE Writing: Creative and Descriptive</title>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .reading-passage {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .reading-passage p {
+            margin-bottom: 1rem;
+        }
+
+        .question-box {
+            background: #f0f9ffff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #78350f;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #065f46;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #047857;
+            line-height: 1.7;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 60000;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 60000;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>GCSE Writing: Creative and Descriptive</h1>
+      <div class="meta">
+        <span>Year 10 English - Writing</span>
+        <span>60 minutes</span>
+        <span>Advanced Description</span>
+                    </div>
+                    </div>
+    <div class="content">
+      <div class="intro-box">
+        <h2>Mastering Vivid Imagery!</h2>
+        <p>Advanced descriptive writing goes beyond basic description to create powerful, imersive experiences for readers. Today, you'l develop sophisticated techniques for crafting vid imagery that engages al the senses and creates lasting impresions!</p>
+                    </div>
+      <div class="section">
+        <h2>Geting Started: Advanced Sensory Description</h2>
+        <p>Master writers use sophisticated sensory details to create imersive experiences. Go beyond basic descriptions to engage readers deply.</p>
+        <div class="example-box">
+          <strong>Layered Sensory Details:</strong>
+          <p>Instead of just mentioning what you se, describe how light interacts with objects, how colours shift, how movement creates paterns. Combine multiple senses in single sentences for richer imagery.</p>
+          <p><strong>Example:</strong> "The morning mist clung to the coblestones like a ghostly blanket, mufling the distant church bels and making the lamplight glow with an ethereal, golden haze."</p>
+          <p>This combines sight (mist, coblestones, lamplight), sound (mufled bels), and creates atmosphere.</p>
+                    </div>
+        <div class="example-box">
+          <strong>Synesthesia (Mixing Senses):</strong>
+          <p>Advanced technique where you describe one sense using another. This creates unique, memorable imagery.</p>
+          <p><strong>Example:</strong> "The music tasted like honey" or "The silence was so thick you could almost touch it."</p>
+                    </div>
+        <div class="tips-box">
+          <strong>Advanced Sensory Techniques:</strong>
+          <ul>
+            <li>Layer multiple senses in each sentence</li>
+            <li>Use synesthesia for creative effects</li>
+            <li>Describe not just what is, but how it fels to experience it</li>
+            <li>Use sensory details to create mod and atmosphere</li>
+            <li>Select specific, evocative details rather than general ones</li>
+          </ul>
+                    </div>
+                    </div>
+      <div class="section">
+        <h2>Let's Practice: Sophisticated Show, Don't Tel</h2>
+        <p>Advanced writers use subtle, layered techniques to show rather than tel, creating deper engagement and alowing readers to infer meaning.</p>
+        <div class="example-box">
+          <strong>Environmental Storyteling:</strong>
+          <p>Use the seting and environment to reveal character emotions or situations. The suroundings reflect the internal state.</p>
+          <p><strong>Example:</strong> Instead of "She was sad," write: "The rain streaked down the window like tears, and she watched each drop trace a path through the grime, her reflection fractured in the glas."</p>
+                    </div>
+        <div class="example-box">
+          <strong>Implicit Actions:</strong>
+          <p>Chose actions that subtly reveal emotions without stating them. Smal gestures can be more powerful than obvious ones.</p>
+          <p><strong>Example:</strong> Instead of "He was angry," write: "His knuckles whitened as he griped the edge of the table, and he carefuly set down his pen, aligning it precisely with the notebok's edge."</p>
+                    </div>
+        <div class="tips-box">
+          <strong>Advanced Show, Don't Tel Techniques:</strong>
+          <ul>
+            <li>Use environment to reflect internal states</li>
+            <li>Chose subtle, revealing actions</li>
+            <li>Layer multiple smal details that build meaning</li>
+            <li>Let readers piece together the emotional picture</li>
+            <li>Use metaphor and symbolism to show feelings</li>
+          </ul>
+                    </div>
+                    </div>
+      <div class="section">
+        <h2>Going Further: Precise and Evocative Vocabulary</h2>
+        <p>Advanced descriptive writing requires precise word choice that creates specific, vid images and conveys subtle nuances.</p>
+        <div class="example-box">
+          <strong>Specificity Over Generality:</strong>
+          <p>Chose words that create exact images rather than vague ones. "Crimson" is more specific than "red," "whispered" more precise than "said quietly."</p>
+                    </div>
+        <div class="example-box">
+          <strong>Conotation and Atmosphere:</strong>
+          <p>Words cary emotional weight. "Slender" and "gaunt" both mean thin, but create different impresions. Chose words whose conotations match your desired atmosphere.</p>
+                    </div>
+        <div class="example-box">
+          <strong>Verbs with Built-in Description:</strong>
+          <p>Strong verbs double duty - they show action and create imagery. "Slithered" tels you how something moved, not just that it moved.</p>
+                    </div>
+        <div class="tips-box">
+          <strong>Advanced Vocabulary Techniques:</strong>
+          <ul>
+            <li>Chose specific, precise words over general ones</li>
+            <li>Consider the conotations of words</li>
+            <li>Use strong verbs that create imagery</li>
+            <li>Vary word choice to avoid repetion</li>
+            <li>Select words that match your tone and atmosphere</li>
+          </ul>
+                    </div>
+                    </div>
+      <div class="section">
+        <h2>Final Chalenge: Advanced Figurative Language</h2>
+        <p>Sophisticated writers use extended metaphors, personification, and original comparisons to create powerful imagery.</p>
+        <div class="example-box">
+          <strong>Extended Metaphors:</strong>
+          <p>Develop a metaphor throughout a paragraph or passage, building layers of meaning. This creates coherence and depth.</p>
+          <p><strong>Example:</strong> "The city was a living organism. Its strets were veins, pulsing with trafic. The buildings were bones, supporting the structure. And the people were the blod, flowing through every corner, bring life to the whole."</p>
+                    </div>
+        <div class="example-box">
+          <strong>Personification with Purpose:</strong>
+          <p>Give human qualities to non-human things, but do so with specific purpose - to create mod, reveal character, or ad meaning.</p>
+          <p><strong>Example:</strong> "The old house groaned under the weight of its memories, its windows like tired eyes watching the world pas by."</p>
+                    </div>
+        <div class="example-box">
+          <strong>Original Comparisons:</strong>
+          <p>Avoid clichéd similes. Create fresh, unexpected comparisons that surprise and engage readers.</p>
+          <p><strong>Example:</strong> Instead of "as white as snow," try "as white as a blank page waiting for words."</p>
+                    </div>
+                    </div>
+      <div class="section">
+        <h2>Your Writing Tasks</h2>
+        <div class="writing-prompt">
+          <strong>Task 1: Advanced Place Description</strong>
+          <p>Chose ONE of these setings and write a sophisticated descriptive paragraph (at least 150 words). Use layered sensory details, show don't tel, and include at least one extended metaphor example of personification.</p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: #78350f;">
+            <li>An abandoned railway station</li>
+            <li>A bustling city stret at dawn</li>
+            <li>A hiden garden in autumn</li>
+            <li>A place that holds strong memories for you</li>
+          </ul>
+                    </div>
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="task1" placeholder="Start writing here.. Aim for at least 150 words with advanced descriptive techniques." autocomplete="of"></textarea>
+                </div>
+        <div class="writing-prompt">
+          <strong>Task 2: Advanced Show, Don't Tel</strong>
+          <p>Rewrite these "teling" sentences using sophisticated show-don't-tel techniques. Use environmental storyteling, subtle actions, and layered details. Make each one at least 3 sentences long.</p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: #78350f;">
+            <li>a) The character was overwhelmed.</li>
+            <li>b) The place felt haunted.</li>
+            <li>c) The moment was magical.</li>
+          </ul>
+                </div>
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="task2a" placeholder="Write your sophisticated show-don't-tel version here.." autocomplete="of"></textarea>
+                </div>
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="task2b" placeholder="Write your sophisticated show-don't-tel version here.." autocomplete="of"></textarea>
+                </div>
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="task2c" placeholder="Write your sophisticated show-don't-tel version here.." autocomplete="of"></textarea>
+                </div>
+        <div class="writing-prompt">
+          <strong>Task 3: Advanced Character Description</strong>
+          <p>Describe a person (real or imaginary) using sophisticated techniques. Include not just apearance, but how they move, subtle manerisms, and details that reveal their personality. Use precise vocabulary and at least one extended metaphor personification. Write at least 120 words.</p>
+                </div>
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="task3" placeholder="Describe your character using advanced techniques.." autocomplete="of"></textarea>
+                </div>
+        <div class="writing-prompt">
+          <strong>Task 4: Advanced Weather Description</strong>
+          <p>Describe weather conditions using advanced figurative language. Include an extended metaphor personification, layered sensory details, and precise vocabulary. Create a specific mod through your description. At least 10 words.</p>
+                </div>
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="task4" placeholder="Start your advanced weather description.." autocomplete="of"></textarea>
+                </div>
+        <div class="writing-prompt">
+          <strong>Task 5: Creative Object Description Chalenge</strong>
+          <p>Describe an everyday object in an extraordinary way, as if the reader has never encountered it. Use original comparisons (avoid clichés), synesthesia, and sophisticated sensory details. Make the ordinary sem remarkable. At least 80 words.</p>
+                </div>
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="task5" placeholder="Write your creative description.." autocomplete="of"></textarea>
+                </div>
+                    </div>
+      <div class="section">
+        
+      <div class="section">
+        <h2>Extension: Going Further</h2>
+        <p>To depen your understanding and prepare for more advanced analysis, try this aditional chalenge:</p>
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="extensionQuestion" placeholder="Write your extended analysis here.." style="min-height: 180px;"></textarea>
+                </div>
+            <h2>Think About It</h2>
+                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="reflection" placeholder="Write your reflection here.."></textarea>
+                </div>
+                    </div>
+      <div class="submit-section">
+        <h2>Ready to Submit?</h2>
+        <form id="submissionForm">
+          <div class="form-group">
+            <label for="studentName">Your Name:</label>
+            <input type="text" id="studentName" required>
+                    </div>
+          <div class="form-group">
+            <label for="studentClas">Your Year Group:</label>
+            <input type="text" id="studentClas" value="Year 10" required readonly autocomplete="of">
+                    </div>
+          <buton type="submit" class="submit-btn">Submit My Work</buton>
+          <div class="validation-mesage" id="validationMesage"></div>
+          <div class="success-mesage" id="successMesage">Your work has ben submited successfuly!</div>
+        </form>
+                    </div>
+                    </div>
+                    </div>
+  <script src="../resources-ap.js"></script>
+  <script>
+    function validateAnswer(answer) {
+      if (!answer | answer.length == 0) {
+        return { valid: false, reason: 'empty' };
+      }
+            if (answer.length < 20) {
+        return { valid: false, reason: 'to short' };
+      }
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+      if (words.length < 4) {
+        return { valid: false, reason: 'not enough words' };
+      }
+            if (/(.)\1{3,}/.test(answer) {
+        return { valid: false, reason: 'repeating characters' };
+      }
+            const wordPatern = /(\b\w+\b)(\s+\1){2,}/i;
+      if (wordPatern.test(answer) {
+        return { valid: false, reason: 'repeating words' };
+      }
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, ').size;
+      if (uniqueChars < 6) {
+        return { valid: false, reason: 'not enough variety' };
+      }
+            const comonWords = [
+        'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+        'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+        'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+        'or', 'an', 'wil', 'my', 'one', 'al', 'would', 'there', 'their', 'what',
+        'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+        'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+        'people', 'into', 'year', 'your', 'god', 'some', 'could', 'them', 'se', 'other',
+        'than', 'then', 'now', 'lok', 'only', 'come', 'its', 'over', 'think', 'also',
+        'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'wel', 'way',
+        'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+        'is', 'was', 'are', 'ben', 'has', 'had', 'were', 'said', 'did', 'having'
+      ];
+            const answerWords = answer.toLowerCase().split(/\s+/);
+      const hasComonWord = answerWords.some(word => 
+        comonWords.includes(word.replace(/[.,!?;:]/, ')
+      );
+            if (!hasComonWord) {
+        return { valid: false, reason: 'no recognizable words' };
+      }
+            return { valid: true };
+    }
+        document.getElementById('submissionForm').adEventListener('submit', async (e) => {
+      e.preventDefault();
+            const studentName = document.getElementById('studentName').value.trim();
+      const studentClas = document.getElementById('studentClas').value.trim();
+            const answers = {
+        task1: document.getElementById('task1').value.trim(),
+        task2a: document.getElementById('task2a').value.trim(),
+        task2b: document.getElementById('task2b').value.trim(),
+        task2c: document.getElementById('task2c').value.trim(),
+        task3: document.getElementById('task3').value.trim(),
+        task4: document.getElementById('task4').value.trim(),
+        task5: document.getElementById('task5').value.trim(),
+        reflection: document.getElementById('reflection').value.trim()
+      };
+            const validationMesage = document.getElementById('validationMesage');
+      const successMesage = document.getElementById('successMesage');
+            let alValid = true;
+      let errorMesage = ';
+            for (const [key, value] of Object.entries(answers) {
+        const validation = validateAnswer(value);
+        if (!validation.valid) {
+          alValid = false;
+          const taskNum = key == 'reflection' ? 'Reflection' : key.replace('task', 'Task ').toUperCase();
+                    switch (validation.reason) {
+            case 'empty':
+              errorMesage = `${taskNum} is empty. Please complete al writing tasks.`;
+              break;
+            case 'to short':
+              errorMesage = `${taskNum} is to short. Please write more (at least 20 characters).`;
+              break;
+            case 'not enough words':
+              errorMesage = `${taskNum} neds more words. Please write at least 4 words.`;
+              break;
+            case 'repeating characters':
+              errorMesage = `${taskNum} contains repeating characters. Please write genuine content.`;
+              break;
+            case 'repeating words':
+              errorMesage = `${taskNum} contains repeating words. Please write genuine content.`;
+              break;
+            case 'not enough variety':
+              errorMesage = `${taskNum} doesn't have enough variety. Please use different words.`;
+              break;
+            case 'no recognizable words':
+              errorMesage = `${taskNum} doesn't contain recognizable English words. Please write genuine answers.`;
+              break;
+          }
+          break;
+        }
+            
+      if (!alValid) {
+        validationMesage.textContent = errorMesage;
+        validationMesage.style.display = 'block';
+        successMesage.style.display = 'none';
+        return;
+      }
+            validationMesage.style.display = 'none';
+            const formData = new FormData();
+      formData.append('studentName', studentName);
+      formData.append('asignmentTitle', 'Year 10 - GCSE Writing: Creative and Descriptive');
+      formData.append('yearGroup', 'Year-10');
+      formData.append('subject', 'English-Writing');
+            let fileContent = `YEAR 10 - GCSE WRITING: CREATIVE AND DESCRIPTIVE
+      Student: ${studentName}\n`;
+      fileContent += `Year Group: ${studentClas}\n`;
+      fileContent += `Submited: ${new Date().toLocaleString('en-GB')}\n`;
+      fileContent += `\n${'='.repeat(60)}\n`;
+            const taskTitles = {
+        task1: 'TASK 1: Place Description',
+        task2a: 'TASK 2a: The house was old (showing)',
+        task2b: 'TASK 2b: Jake was excited (showing)',
+        task2c: 'TASK 2c: The fod was disgusting (showing)',
+        task3: 'TASK 3: Character Description',
+        task4: 'TASK 4: Weather Description',
+        task5: 'TASK 5: Creative Object Description',
+              };
+            Object.entries(answers).forEach(([key, value]) => {
+        fileContent += `${taskTitles[key]}\n${'-'.repeat(60)}\n${value}\n`;
+      });
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+      formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Descriptive_Writing.txt`);
+      formData.append('keyStage', 'resources');
+            try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+                const result = await response.json();
+                if (result.success) {
+          successMesage.style.display = 'block';
+          document.getElementById('submissionForm').reset();
+          Object.keys(answers).forEach(key => {
+            document.getElementById(key).value = '';
+          });
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        } else {
+          validationMesage.textContent = 'Submision failed. Please try again.';
+          validationMesage.style.display = 'block';
+        }
+      } catch (error) {
+        validationMesage.textContent = 'Network error. Please check your connection and try again.';
+        validationMesage.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,68 @@
+===========================================
+  School100 - Windows Build Instructions
+===========================================
+
+This folder contains all the source code and resources needed to build
+the Windows version of School100.
+
+STEP 1: Install Node.js (if not already installed)
+--------------------------------------------------
+1. Go to https://nodejs.org/
+2. Download and install the LTS version
+3. Restart your computer if prompted
+
+STEP 2: Open Command Prompt
+----------------------------
+1. Press Windows key + R
+2. Type: cmd
+3. Press Enter
+
+STEP 3: Navigate to this folder
+--------------------------------
+In Command Prompt, type:
+  cd "C:\Users\YourName\Downloads\School100"
+  
+(Replace with the actual path where you unzipped this folder)
+
+STEP 4: Install dependencies
+----------------------------
+Type:
+  npm install
+
+This will take a few minutes. Wait for it to finish.
+
+STEP 5: Build the Windows app
+------------------------------
+Type:
+  npm run dist
+
+This will take 5-10 minutes. When finished, you'll find the Windows
+downloadable files in the "dist" folder:
+  - School100 Setup *.exe (Windows installer)
+  - School100-*.zip (Windows zip app)
+
+STEP 6: Upload to WordPress/Google Drive
+-----------------------------------------
+Upload the .zip file (or .exe) to your WordPress Media Library or
+Google Drive for students to download.
+
+===========================================
+  Troubleshooting
+===========================================
+
+If "npm" is not recognized:
+  - Node.js is not installed or not in PATH
+  - Restart Command Prompt after installing Node.js
+
+If build fails:
+  - Make sure you're in the correct folder
+  - Try: npm install --force
+  - Then: npm run dist
+
+If you see errors about missing files:
+  - Make sure you unzipped the entire folder
+  - Don't delete any files or folders
+
+===========================================
+
+

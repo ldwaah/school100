@@ -1,0 +1,24 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+  command = "npm run generate-manifest"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/upload"
+  to = "/.netlify/functions/upload"
+  status = 200
+
+# Serve static resources
+[[redirects]]
+  from = "/resources/files/*"
+  to = "/resources-files/:splat"
+  status = 200
+

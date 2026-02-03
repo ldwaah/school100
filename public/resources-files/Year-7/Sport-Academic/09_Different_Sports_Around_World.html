@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Sport: Rules & Regulations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .reading-passage {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .reading-passage p {
+            margin-bottom: 1rem;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #78350f;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #065f46;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #047857;
+            line-height: 1.7;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Understanding Sport: Rules & Regulations</h1>
+            <div class="meta">
+                <span>Year 7 Sport - Academic</span>
+                <span>60 minutes</span>
+                <span>Rules & Regulations</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Understanding Sport Rules!</h2>
+                <p>Every sport has rules that make it fair and safe. Understanding these rules helps you play better and enjoy the game more. In this resource, you'll discover about why rules exist, how they work, and how they keep sports fair and fun!</p>
+            </div>
+
+            <div class="section">
+                <h2>Getting Started: Why Do Sports Have Rules</h2>
+                <p><strong>Rules</strong> are the guidelines that tell players how to play a sport. They exist for three main reasons:</p>
+
+                <div class="example-box">
+                    <strong>1. Fairness:</strong>
+                    <p>Rules make sure everyone has the same chance to win. For example, in football, you can't use your hands (unless you're the goalkeeper). This makes the game fair for everyone.</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>2. Safety:</strong>
+                    <p>Rules protect players from getting hurt. In rugby, you must tackle below the shoulders to keep players safe.</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>3. Structure:</strong>
+                    <p>Rules give the game structure and make it fun. Without rules, sports would be confusing and no one would know how to play!</p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>Key Points About Rules:</strong>
+                    <ul>
+                        <li>Rules are the same for everyone</li>
+                        <li>Referees and umpires make sure rules are followed</li>
+                        <li>Breaking rules can result in penalties or being sent off</li>
+                        <li>Rules can change over time to make sports better</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: Common Rules in Popular Sports</h2>
+                <p>Let's look at some common rules in sports you might play:</p>
+
+                <div class="example-box">
+                    <strong>Football Rules:</strong>
+                    <p>• You cannot use your hands (except the goalkeeper)</p>
+                    <p>• The ball must stay within the field boundaries</p>
+                    <p>• Offside rule: You cannot be closer to the goal than the last defender when the ball is passed to you</p>
+                    <p>• Fouls result in free kicks or penalties</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Basketball Rules:</strong>
+                    <p>• You must dribble (bounce) the ball while moving</p>
+                    <p>• You cannot take more than two steps without dribbling</p>
+                    <p>• The ball must stay within the court boundaries</p>
+                    <p>• Personal fouls can result in free throws</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Netball Rules:</strong>
+                    <p>• You cannot move with the ball - you must pass or shoot</p>
+                    <p>• You can only hold the ball for 3 seconds</p>
+                    <p>• Players have specific areas they can move in</p>
+                    <p>• Contact is not allowed</p>
+                </div>
+
+                <h3>Answer these questions about sport rules:</h3>
+
+                <div class="question-box">
+                    <div class="question-number">Question 1:</div>
+                    <div class="question-text">Why do you think football has a rule that says you cannot use your hands? What would happen if this rule didn't exist?</div>
+                    <textarea id="answer1" placeholder="Write your answer here... Think about fairness and how the game would change." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 2:</div>
+                    <div class="question-text">In netball, why do you think players are only allowed to hold the ball for 3 seconds? How does this rule make the game more exciting?</div>
+                    <textarea id="answer2" placeholder="Write your answer here... Think about how rules affect the pace of the game." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 3:</div>
+                    <div class="question-text">Explain why rules about contact (like in netball where contact is not allowed) are important for player safety. Give an example.</div>
+                    <textarea id="answer3" placeholder="Write your answer here... Think about how rules protect players." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 4:</div>
+                    <div class="question-text">What is the role of a referee or umpire in sport? Why is it important to have someone who enforces the rules?</div>
+                    <textarea id="answer4" placeholder="Write your answer here... Think about fairness and consistency." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 5:</div>
+                    <div class="question-text">Choose a sport you know well. Explain two important rules in that sport and why they exist.</div>
+                    <textarea id="answer5" placeholder="Write your answer here... Think about a sport you play or watch." autocomplete="off"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Understanding Penalties and Consequences</h2>
+                <p>When rules are broken, there are consequences. Let's learn about penalties in sport:</p>
+
+                <div class="example-box">
+                    <strong>Types of Penalties:</strong>
+                    <p>• <strong>Free kicks</strong> (football): Given when a foul happens</p>
+                    <p>• <strong>Free throws</strong> (basketball): Given when a player is fouled while shooting</p>
+                    <p>• <strong>Yellow cards</strong> (football): Warning for bad behaviour</p>
+                    <p>• <strong>Red cards</strong> (football): Player sent off for serious rule breaking</p>
+                    <p>• <strong>Time penalties</strong> (hockey): Player sits out for a period of time</p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>Why Penalties Matter:</strong>
+                    <ul>
+                        <li>They discourage rule breaking</li>
+                        <li>They keep the game fair</li>
+                        <li>They protect players from dangerous play</li>
+                        <li>They help maintain sportsmanship</li>
+                    </ul>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 6:</div>
+                    <div class="question-text">What is the difference between a yellow card and a red card in football? When would each be given?</div>
+                    <textarea id="answer6" placeholder="Write your answer here... Think about the seriousness of different rule breaks." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 7:</div>
+                    <div class="question-text">Why do you think some sports have time penalties (like in hockey) while others use cards? Explain your thinking.</div>
+                    <textarea id="answer7" placeholder="Write your answer here... Think about how different sports handle rule breaking." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 8:</div>
+                    <div class="question-text">Explain why it's important that penalties are fair and consistent. What would happen if referees were unfair?</div>
+                    <textarea id="answer8" placeholder="Write your answer here... Think about trust and fairness in sport." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 9:</div>
+                    <div class="question-text">Describe a situation where you saw a rule being broken in sport (or imagine one). What penalty was or should have been given? Why?</div>
+                    <textarea id="answer9" placeholder="Write your answer here... Think about real examples or create a scenario." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 10:</div>
+                    <div class="question-text">Why is it important for players to know and understand the rules of their sport? How does this help them play better?</div>
+                    <textarea id="answer10" placeholder="Write your answer here... Think about how understanding rules improves performance." autocomplete="off"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Think About It</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection Question:</div>
+                    <div class="question-text">Why are rules important in sport? How do they make sports fair, safe, and fun? Can you think of a rule that you think should be changed or added to a sport you know? Why?</div>
+                    <textarea id="reflection" placeholder="Write your reflection here... Think about what you learned today."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 7" required readonly autocomplete="off">
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        // Enhanced validation function
+        function validateAnswer(answer) {
+            // Must have content
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            // Minimum 10 characters
+            if (answer.length < 10) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            // Minimum 2 words
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 2) {
+                return { valid: false, reason: 'not enough words' };
+            }
+            
+            // Check for repeating characters (e.g., "aaaa", "1111")
+            if (/(.)\1{3,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            // Check for repeating words (e.g., "boot boot boot")
+            const wordPattern = /(\b\w+\b)(\s+\1){2,}/i;
+            if (wordPattern.test(answer)) {
+                return { valid: false, reason: 'repeating words' };
+            }
+            
+            // Minimum 4 different characters
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 4) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            // Check for common English words (at least one meaningful word)
+            const commonWords = [
+                'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+                'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+                'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+                'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+                'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+                'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+                'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+                'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+                'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+                'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+                'is', 'was', 'are', 'been', 'has', 'had', 'were', 'said', 'did', 'having',
+                'marcus', 'maya', 'amara', 'shed', 'school', 'feeling', 'nervous', 'worried', 'happy',
+                'friendly', 'helpful', 'scared', 'excited', 'curious', 'kind', 'text', 'shows',
+                'suggests', 'because', 'character', 'evidence', 'passage', 'demonstrates'
+            ];
+            
+            const answerWords = answer.toLowerCase().split(/\s+/);
+            const hasCommonWord = answerWords.some(word => 
+                commonWords.includes(word.replace(/[.,!?;:]/, ''))
+            );
+            
+            if (!hasCommonWord) {
+                return { valid: false, reason: 'no recognizable words' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                answer1: document.getElementById('answer1').value.trim(),
+                answer2: document.getElementById('answer2').value.trim(),
+                answer3: document.getElementById('answer3').value.trim(),
+                answer4: document.getElementById('answer4').value.trim(),
+                answer5: document.getElementById('answer5').value.trim(),
+                answer6: document.getElementById('answer6').value.trim(),
+                answer7: document.getElementById('answer7').value.trim(),
+                answer8: document.getElementById('answer8').value.trim(),
+                answer9: document.getElementById('answer9').value.trim(),
+                answer10: document.getElementById('answer10').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Validate all answers
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const questionNum = key === 'reflection' ? 'Reflection' : key.replace('answer', 'Question ');
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${questionNum} is empty. Please complete all questions.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${questionNum} is too short. Please provide a more detailed answer (at least 10 characters).`;
+                            break;
+                        case 'not enough words':
+                            errorMessage = `${questionNum} needs more words. Please write at least 2 words.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${questionNum} contains repeating characters (e.g., "aaaa"). Please provide a genuine answer.`;
+                            break;
+                        case 'repeating words':
+                            errorMessage = `${questionNum} contains repeating words. Please provide a genuine answer.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${questionNum} doesn't have enough variety. Please use different characters and words.`;
+                            break;
+                        case 'no recognizable words':
+                            errorMessage = `${questionNum} doesn't contain recognizable English words. Please write genuine answers.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            // Create form data
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 7 - Understanding Sport: Rules & Regulations');
+            formData.append('yearGroup', 'Year-7');
+            formData.append('subject', 'Sport-Academic');
+            
+            // Create text file content
+            let fileContent = `YEAR 7 - UNDERSTANDING SPORT: RULES & REGULATIONS\n`;
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const questionTitles = {
+                answer1: 'Q1: Why can\'t you use hands in football?',
+                answer2: 'Q2: Why 3-second rule in netball?',
+                answer3: 'Q3: Why are contact rules important?',
+                answer4: 'Q4: Role of referee/umpire',
+                answer5: 'Q5: Two important rules in a sport',
+                answer6: 'Q6: Yellow card vs red card',
+                answer7: 'Q7: Time penalties vs cards',
+                answer8: 'Q8: Why fair penalties matter',
+                answer9: 'Q9: Rule breaking scenario',
+                answer10: 'Q10: Why know the rules?',
+                reflection: 'REFLECTION: Why are rules important in sport?'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${questionTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Sport_Rules_Regulations.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+

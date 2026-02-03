@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parts of Speech: Nouns, Verbs, Adjectives & Adverbs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .section ul {
+            margin-left: 2rem;
+            color: #374151;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .word-type-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .word-type-box h4 {
+            color: #065f46;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .word-type-box p {
+            color: #047857;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .word-type-box strong {
+            color: #065f46;
+        }
+
+        .example-box {
+            background: #ede9fe;
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #5b21b6;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #6b21a8;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #78350f;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input[readonly] {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Parts of Speech: Nouns, Verbs, Adjectives & Adverbs</h1>
+            <div class="meta">
+                <span>Year 7 English - Vocabulary & SPaG</span>
+                <span>60 minutes</span>
+                <span>Word Types</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Understanding Word Types!</h2>
+                <p>Every word in English belongs to a word type (part of speech). Understanding these helps you write better, understand grammar, and communicate clearly. Today, you'll master the four most important word types: nouns, verbs, adjectives, and adverbs!</p>
+            </div>
+
+            <div class="section">
+                <h2>Getting Started: Nouns</h2>
+                <p>A <strong>noun</strong> is a naming word. It names people, places, things, or ideas.</p>
+
+                <div class="word-type-box">
+                    <h4>Types of Nouns:</h4>
+                    <p><strong>Common Nouns:</strong> General names (dog, city, book, happiness)</p>
+                    <p><strong>Proper Nouns:</strong> Specific names - always capitalised (Sarah, London, Harry Potter)</p>
+                    <p><strong>Concrete Nouns:</strong> Things you can see/touch (table, apple, river)</p>
+                    <p><strong>Abstract Nouns:</strong> Ideas/feelings you can't touch (love, bravery, friendship)</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Examples in sentences:</strong>
+                    <p>"<strong>Tom</strong> (proper noun) went to the <strong>park</strong> (common noun) to find <strong>happiness</strong> (abstract noun)."</p>
+                    <p>"The <strong>cat</strong> (common noun) sat on the <strong>chair</strong> (common noun)."</p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>How to identify nouns:</strong>
+                    <ul>
+                        <li>Can you put "the" or "a" in front of it? → It's probably a noun</li>
+                        <li>Can you count it? (one cat, two cats) → Common noun</li>
+                        <li>Does it start with a capital letter? → Probably a proper noun</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: Verbs</h2>
+                <p>A <strong>verb</strong> is a doing or being word. It shows action or a state of being.</p>
+
+                <div class="word-type-box">
+                    <h4>Types of Verbs:</h4>
+                    <p><strong>Action Verbs:</strong> Show doing (run, jump, write, think, laugh)</p>
+                    <p><strong>Being Verbs:</strong> Show state (am, is, are, was, were, be, being, been)</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Examples in sentences:</strong>
+                    <p>"Mia <strong>runs</strong> (action verb) quickly."</p>
+                    <p>"She <strong>is</strong> (being verb) happy."</p>
+                    <p>"The students <strong>were writing</strong> (action verb) their essays."</p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>How to identify verbs:</strong>
+                    <ul>
+                        <li>Can you put "I" or "they" before it? → It's probably a verb</li>
+                        <li>Does it show action? → Action verb</li>
+                        <li>Does it show what something is? → Being verb</li>
+                        <li>Verbs change with tense: walk → walked → walking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Adjectives</h2>
+                <p>An <strong>adjective</strong> describes a noun. It tells us more about the noun (what kind, how many, which one).</p>
+
+                <div class="word-type-box">
+                    <h4>Types of Adjectives:</h4>
+                    <p><strong>Describing:</strong> big, red, happy, cold, fast, beautiful</p>
+                    <p><strong>Quantity:</strong> many, few, several, five, all</p>
+                    <p><strong>Demonstrative:</strong> this, that, these, those</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Examples in sentences:</strong>
+                    <p>"The <strong>enormous</strong> (adjective) elephant (noun) trumpeted loudly."</p>
+                    <p>"She wore a <strong>red</strong> (adjective) coat (noun) and <strong>warm</strong> (adjective) gloves (noun)."</p>
+                    <p>"<strong>These</strong> (adjective) books (noun) are interesting."</p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>How to identify adjectives:</strong>
+                    <ul>
+                        <li>Ask: "What kind of [noun]?" → The answer is an adjective</li>
+                        <li>Adjectives usually come before the noun they describe</li>
+                        <li>You can have more than one adjective: "the big, red, shiny car"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Final Challenge: Adverbs</h2>
+                <p>An <strong>adverb</strong> describes a verb, adjective, or another adverb. It tells us HOW, WHEN, WHERE, or HOW OFTEN something happens.</p>
+
+                <div class="word-type-box">
+                    <h4>Types of Adverbs:</h4>
+                    <p><strong>How (manner):</strong> quickly, slowly, carefully, beautifully (usually end in -ly)</p>
+                    <p><strong>When (time):</strong> yesterday, soon, always, never, now</p>
+                    <p><strong>Where (place):</strong> here, there, everywhere, outside</p>
+                    <p><strong>How much (degree):</strong> very, quite, extremely, too</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Examples in sentences:</strong>
+                    <p>"She ran <strong>quickly</strong> (adverb describing 'ran')."</p>
+                    <p>"He <strong>always</strong> (adverb describing 'arrives') arrives late."</p>
+                    <p>"The cake was <strong>extremely</strong> (adverb describing 'delicious') delicious (adjective)."</p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>How to identify adverbs:</strong>
+                    <ul>
+                        <li>Many adverbs end in -ly (but not all: fast, well, hard, late)</li>
+                        <li>Ask: "How did they do it?" → The answer is often an adverb</li>
+                        <li>Adverbs can move around: "Quickly, she ran" or "She ran quickly"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Your Practice Tasks</h2>
+
+                <div class="question-box">
+                    <div class="question-number">Task 1: Identify Word Types</div>
+                    <div class="question-text">
+                        In this sentence, identify each word type. Label them as Noun (N), Verb (V), Adjective (Adj), or Adverb (Adv):
+                        <br><br>
+                        "The quick brown fox jumps over the lazy dog."
+                        <br><br>
+                        Write your answers like this: The (Adj), quick (Adj), brown (Adj), fox (N), jumps (V), etc.
+                    </div>
+                    <textarea id="task1" placeholder="Label each word type..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2: Find the Nouns</div>
+                    <div class="question-text">
+                        Read this paragraph and list all the nouns. Categorise them as Common, Proper, Concrete, or Abstract:
+                        <br><br>
+                        "Sarah walked through London with excitement. She saw beautiful buildings and thought about her future. Her friend Jake was waiting near the bridge."
+                    </div>
+                    <textarea id="task2" placeholder="List and categorise all nouns..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 3: Find the Verbs</div>
+                    <div class="question-text">
+                        From the same paragraph in Task 2, list all the verbs and say whether each is an action verb or being verb.
+                    </div>
+                    <textarea id="task3" placeholder="List all verbs and their types..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 4: Add Adjectives</div>
+                    <div class="question-text">
+                        Rewrite this sentence adding THREE adjectives to make it more interesting:
+                        <br><br>
+                        "The cat sat on the mat."
+                    </div>
+                    <textarea id="task4" placeholder="Rewrite with adjectives added..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 5: Add Adverbs</div>
+                    <div class="question-text">
+                        Rewrite this sentence adding TWO adverbs:
+                        <br><br>
+                        "The student completed the homework."
+                    </div>
+                    <textarea id="task5" placeholder="Rewrite with adverbs added..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 6: Create Your Own</div>
+                    <div class="question-text">
+                        Write THREE sentences of your own. Each sentence must contain:
+                        <br>• At least one noun
+                        <br>• At least one verb
+                        <br>• At least one adjective
+                        <br>• At least one adverb
+                        <br><br>
+                        Label the parts of speech in each sentence.
+                    </div>
+                    <textarea id="task6" style="min-height: 200px;" placeholder="Write your three sentences with labels..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 7: Word Type Challenge</div>
+                    <div class="question-text">
+                        The word "round" can be used as different parts of speech. Write THREE sentences using "round" as:
+                        <br>a) A noun
+                        <br>b) A verb
+                        <br>c) An adjective
+                        <br><br>
+                        Label which is which.
+                    </div>
+                    <textarea id="task7" placeholder="Write three sentences using 'round' differently..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Reflection</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection:</div>
+                    <div class="question-text">Which word type do you find easiest to identify? Which is hardest? How does understanding parts of speech help with your writing? Can you think of a word that can be used as different parts of speech?</div>
+                    <textarea id="reflection" placeholder="Write your reflection here..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 7" required readonly>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        function validateAnswer(answer) {
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            if (answer.length < 10) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 3) {
+                return { valid: false, reason: 'not enough words' };
+            }
+            
+            if (/(.)\1{3,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            const wordPattern = /(\b\w+\b)(\s+\1){2,}/i;
+            if (wordPattern.test(answer)) {
+                return { valid: false, reason: 'repeating words' };
+            }
+            
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 4) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            const commonWords = [
+                'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+                'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+                'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+                'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+                'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+                'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+                'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+                'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+                'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+                'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+                'is', 'was', 'are', 'been', 'has', 'had', 'were', 'said', 'did', 'having',
+                'noun', 'verb', 'adjective', 'adverb', 'common', 'proper', 'concrete', 'abstract',
+                'action', 'being', 'quickly', 'slowly', 'beautiful', 'student', 'homework'
+            ];
+            
+            const answerWords = answer.toLowerCase().split(/\s+/);
+            const hasCommonWord = answerWords.some(word => 
+                commonWords.includes(word.replace(/[.,!?;:]/, ''))
+            );
+            
+            if (!hasCommonWord) {
+                return { valid: false, reason: 'no recognizable words' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                task1: document.getElementById('task1').value.trim(),
+                task2: document.getElementById('task2').value.trim(),
+                task3: document.getElementById('task3').value.trim(),
+                task4: document.getElementById('task4').value.trim(),
+                task5: document.getElementById('task5').value.trim(),
+                task6: document.getElementById('task6').value.trim(),
+                task7: document.getElementById('task7').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const taskNum = key === 'reflection' ? 'Reflection' : key.replace('task', 'Task ').toUpperCase();
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${taskNum} is empty. Please complete all tasks.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${taskNum} is too short. Please write more (at least 10 characters).`;
+                            break;
+                        case 'not enough words':
+                            errorMessage = `${taskNum} needs more words. Please write at least 3 words.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${taskNum} contains repeating characters. Please write genuine content.`;
+                            break;
+                        case 'repeating words':
+                            errorMessage = `${taskNum} contains repeating words. Please write genuine content.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${taskNum} doesn't have enough variety. Please use different words.`;
+                            break;
+                        case 'no recognizable words':
+                            errorMessage = `${taskNum} doesn't contain recognizable English words. Please write genuine answers.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 7 - Parts of Speech: Nouns, Verbs, Adjectives & Adverbs');
+            formData.append('yearGroup', 'Year-7');
+            formData.append('subject', 'English-Vocabulary-SPaG');
+            
+            let fileContent = `YEAR 7 - PARTS OF SPEECH: NOUNS, VERBS, ADJECTIVES & ADVERBS\n`;
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const taskTitles = {
+                task1: 'TASK 1: Identify Word Types',
+                task2: 'TASK 2: Find the Nouns',
+                task3: 'TASK 3: Find the Verbs',
+                task4: 'TASK 4: Add Adjectives',
+                task5: 'TASK 5: Add Adverbs',
+                task6: 'TASK 6: Create Your Own',
+                task7: 'TASK 7: Word Type Challenge',
+                reflection: 'REFLECTION: Parts of speech'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${taskTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Parts_of_Speech.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

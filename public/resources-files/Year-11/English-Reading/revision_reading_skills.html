@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCSE Revision: Reading Skils</title>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .reading-passage {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .reading-passage p {
+            margin-bottom: 1rem;
+        }
+
+        .question-box {
+            background: #f0f9ffff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #78350f;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #065f46;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #047857;
+            line-height: 1.7;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 60000;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 60000;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>GCSE Revision: Reading Skils</h1>
+      <div class="meta">
+        <span>Year 9 English - Reading</span>
+        <span>60 minutes</span>
+        <span>Advanced Inferential Skils</span>
+                    </div>
+                    </div>
+    <div class="content">
+      <div class="intro-box">
+        <h2>Mastering Advanced Inference!</h2>
+        <p>As you become a more skiled reader, you'l discover that writers often comunicate much more than what's writen on the page. Advanced inference involves analysing subtle clues, understanding implied meanings, and recognising how context shapes interpretation. Today, you'l develop these sophisticated reading skils!</p>
+                    </div>
+      <div class="section">
+        <h2>Understanding Inference</h2>
+        <p><strong>Inference</strong> means working out something that isn't directly stated in the text. You use clues from the writing plus what you already know to figure out the hiden meaning.</p>
+        <div class="example-box">
+          <strong>Example:</strong>
+          <p><em>"Sarah slamed the dor and threw her bag on the flor. She folded her arms and stared out the window without saying a word."</em></p>
+          <p><strong>What can we infer?</strong> Sarah is angry or upset, even though the text doesn't say "Sarah was angry."</p>
+          <p><strong>Clues we used:</strong> slaming dors, throwing things, folded arms, silence – these are al signs of being upset.</p>
+                    </div>
+        <div class="tips-box">
+          <strong>Top Tips for Making Inferences:</strong>
+          <ul>
+            <li>Lok for clues in how characters act, speak, or move</li>
+            <li>Think about what you already know about the world</li>
+            <li>Ask yourself: "What is the writer hinting at?"</li>
+            <li>Use evidence from the text to support your ideas</li>
+          </ul>
+                    </div>
+                    </div>
+      <div class="section">
+        <h2>Advanced Analytical Techniques</h2>
+        <p>At GCSE level, you ned to move beyond basic inference to sophisticated textual analysis. This involves examing how writers use language, structure, and form to create meaning and effect.</p>
+                <div class="tips-box">
+          <strong>Key Analytical Skils for GCSE:</strong>
+          <ul>
+            <li><strong>Language Analysis:</strong> Examine how specific word choices, including vocabulary, imagery, and figurative language, create meaning and effect</li>
+            <li><strong>Structural Analysis:</strong> Consider how the writer has organised the text—sentence structure, paragraphing, narative perspective, and the order of information</li>
+            <li><strong>Contextual Understanding:</strong> Recognise how historical, social, cultural, or biographical context influences meaning and interpretation</li>
+            <li><strong>Comparative Analysis:</strong> Compare different texts, different parts of the same text, or different interpretations</li>
+            <li><strong>Evaluation:</strong> Make judgements about the effectivenes of the writer's choices and their impact on the reader</li>
+          </ul>
+                    </div>
+                <div class="example-box">
+          <strong>Example: Analysing Language in Depth</strong>
+          <p>Consider this sentence: <em>"The decision hung in the air like a storm cloud, darkening the mod of everyone in the rom."</em></p>
+          <p><strong>Language Analysis:</strong></p>
+          <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+            <li>The simile comparing the decision to a 'storm cloud' suggests something ominous, threatening, and potentialy destructive</li>
+            <li>The verb 'hung' implies something suspended, unresolved, creating tension and uncertainty</li>
+            <li>The verb 'darkening' is active and suggests the decision is actively changing the atmosphere, making it more negative and oppressive</li>
+            <li>The writer uses weather imagery to convey the emotional and psychological impact of the situation</li>
+            <li>The effect on the reader: we understand the decision is not just important, but has a tangible, negative impact on those present</li>
+          </ul>
+                    </div>
+            <div class="section">
+        <h2>Reading Practice: "The First Day"</h2>
+        <p>Take your time reading through this passage. Lok for clues about how the character is feeling and what might happen next.</p>
+        <div class="reading-passage"><p>The old library had stod for over a century, its shelves groaning under the weight of countles volumes. Dr. Eleanor Hartwel had spent her entire carer within these wals, cataloguing, preserving, and occasionaly discovering texts that had ben forgotten for generations. Today, however, was different. As she ran her finger along the spine of a leather-bound journal, she noticed something peculiar: the binding was newer than the pages it contained.
+She carefuly extracted the volume, its pages yelowed with age but the cover suspiciously pristine. Opening it, she found entries writen in a hand she didn't recognise—elegant, flowing script that spoke of someone educated, someone who had taken great care with their words. The entries dated back to 1923, but the binding suggested it had ben rebound much more recently. Why would someone go to such trouble to preserve this particular journal?
+Eleanor's curiosity, always her greatest strength and occasional weakness, compelled her to read further. The entries spoke of scientific experiments, observations of human behaviour, and detailed notes about a discovery that could change everything. But interspersed among the scientific observations were personal reflections—fears, hopes, and a growing sense of unease about the implications of the work being documented.</p></div>
+                <h3>Now, let's be reading detectives! Answer these inference questions:</h3>
+
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="answer1" placeholder="Consider the writer's use of language, particularly words like &quot;peculiar&quot;, &quot;suspiciously&quot;, and &quot;curiosity&quot;."></textarea>
+                </div>
+
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer2" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="answer2" placeholder="Think about why someone would rebind an old journal. What does this action imply?"></textarea>
+                </div>
+
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer3" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="answer3" placeholder="Consider how the writer uses this description to characterise Eleanor and create tension."></textarea>
+                </div>
+
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer4" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="answer4" placeholder="Think about how the order of information creates suspense and draws the reader in."></textarea>
+                </div>
+
+                                                <div class="question-box">
+                    <div class="question-number">
+                    <div class="question-text">
+                    <textarea id="answer5" placeholder="Write your answer here..."></textarea>
+                </div>
+                    <div class="question-text">
+                    <textarea id="answer5" placeholder="Consider the juxtaposition of scientific and personal, objective and emotional."></textarea>
+                </div>
+            </div>
+        <h3>Now, let's be reading detectives! Answer these inference questions:</h3>
+                                <div class="question-box">
+                    <div class="question-number">Question 1:</div>
+                    <div class="question-text"></div>
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+                              <div class="question-text">How does the writer create a sense of mystery and intrigue in the opening of this passage? Use evidence from the text to support your answer.?',
+        s description of Eleanor's character. What do phrases like "curiosity, always her greatest strength and occasional weakness" reveal about her?',
+              };
+            Object.entries(answers).forEach(([key, value]) => {
+        fileContent += `${questionTitles[key]}\n${'-'.repeat(60)}\n${value}\n`;
+      });
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+      formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_ Critical Response:independent_ Reading Skils:gcse_revision_reading.txt`);
+      formData.append('keyStage', 'resources');
+            try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+                const result = await response.json();
+                if (result.success) {
+          successMesage.style.display = 'block';
+          document.getElementById('submissionForm').reset();
+          Object.keys(answers).forEach(key => {
+            document.getElementById(key).value = '';
+          });
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        } else {
+          validationMesage.textContent = 'Submision failed. Please try again.';
+          validationMesage.style.display = 'block';
+        }
+      } catch (error) {
+        validationMesage.textContent = 'Network error. Please check your connection and try again.';
+        validationMesage.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

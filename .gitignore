@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Uploaded files
+uploads/
+
+# Build outputs (Electron)
+dist/
+
+# Environment variables
+.env
+
+# Google Drive credentials - NEVER COMMIT THIS!
+google-credentials.json
+google-token.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+netlify-env-variables.txt

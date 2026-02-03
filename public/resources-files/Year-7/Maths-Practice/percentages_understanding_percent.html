@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentages: Understanding Percent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .method-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .method-box h4 {
+            color: #065f46;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .method-box p {
+            color: #047857;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-box {
+            background: #ede9fe;
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #5b21b6;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #6b21a8;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #78350f;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input[readonly] {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Percentages: Understanding Percent</h1>
+            <div class="meta">
+                <span>Year 7 Maths - Practice</span>
+                <span>60 minutes</span>
+                <span>Percentages</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Master Percentages!</h2>
+                <p>Percentages are everywhere - in sales, test scores, and daily life! "Percent" means "out of 100". This resource focuses on to understand, calculate, and use percentages!</p>
+            </div>
+
+            <div class="section">
+                <h2>Understanding a Percentage</h2>
+                <p>A <strong>percentage</strong> shows a part out of 100. The % symbol means "out of 100".</p>
+
+                <div class="method-box">
+                    <h4>Understanding Percent</h4>
+                    <p><strong>50%</strong> = 50 out of 100 = 50/100 = 1/2 = 0.5</p>
+                    <p><strong>25%</strong> = 25 out of 100 = 25/100 = 1/4 = 0.25</p>
+                    <p><strong>100%</strong> = 100 out of 100 = the whole thing</p>
+                    <p><strong>0%</strong> = nothing</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Real Life Examples:</strong>
+                    <p>• A test score of 80% means you got 80 out of 100 questions correct</p>
+                    <p>• A sale with 25% off means you save 25 out of every 100 pence</p>
+                    <p>• If 60% of students like pizza, that's 60 out of every 100 students</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: Converting Between Percentages, Fractions, and Decimals</h2>
+
+                <div class="method-box">
+                    <h4>Percent to Fraction</h4>
+                    <p>Write the percent as a fraction with 100 as the denominator, then simplify</p>
+                    <p><strong>Examples:</strong></p>
+                    <p>• 50% = 50/100 = 1/2</p>
+                    <p>• 25% = 25/100 = 1/4</p>
+                    <p>• 75% = 75/100 = 3/4</p>
+                    <p>• 20% = 20/100 = 1/5</p>
+                </div>
+
+                <div class="method-box">
+                    <h4>Percent to Decimal</h4>
+                    <p>Divide by 100 (move decimal point 2 places left)</p>
+                    <p><strong>Examples:</strong></p>
+                    <p>• 50% = 50 ÷ 100 = 0.50 = 0.5</p>
+                    <p>• 25% = 25 ÷ 100 = 0.25</p>
+                    <p>• 5% = 5 ÷ 100 = 0.05</p>
+                    <p>• 100% = 100 ÷ 100 = 1.0</p>
+                </div>
+
+                <div class="method-box">
+                    <h4>Fraction to Percent</h4>
+                    <p>Convert to decimal first, then multiply by 100</p>
+                    <p><strong>Examples:</strong></p>
+                    <p>• 1/2 = 0.5 = 0.5 × 100 = 50%</p>
+                    <p>• 1/4 = 0.25 = 0.25 × 100 = 25%</p>
+                    <p>• 3/4 = 0.75 = 0.75 × 100 = 75%</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Finding a Percentage of an Amount</h2>
+
+                <div class="example-box">
+                    <strong>Method 1: Using Fractions</strong>
+                    <p><strong>Example: Find 25% of 80</strong></p>
+                    <p>25% = 1/4</p>
+                    <p>1/4 of 80 = 80 ÷ 4 = 20</p>
+                    <p><strong>Answer: 20</strong></p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Method 2: Using Decimals</strong>
+                    <p><strong>Example: Find 30% of 50</strong></p>
+                    <p>30% = 0.30</p>
+                    <p>0.30 × 50 = 15</p>
+                    <p><strong>Answer: 15</strong></p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>Top Tips:</strong>
+                    <ul>
+                        <li>10% = divide by 10 (easy to find!)</li>
+                        <li>50% = divide by 2 (half)</li>
+                        <li>25% = divide by 4 (quarter)</li>
+                        <li>To find other percentages, find 10% first, then multiply</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Final Challenge: Your Practice Tasks</h2>
+
+                <div class="question-box">
+                    <div class="question-number">Task 1: Understanding Percentages</div>
+                    <div class="question-text">
+                        Explain what each percentage means:
+                        <br><br>
+                        a) 50%<br>
+                        b) 25%<br>
+                        c) 75%<br>
+                        d) 10%<br>
+                        e) 100%
+                    </div>
+                    <textarea id="task1" placeholder="Explain what each percentage means..." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2: Converting Percentages to Fractions</div>
+                    <div class="question-text">
+                        Convert these percentages to fractions in simplest form:
+                        <br><br>
+                        a) 50%<br>
+                        b) 25%<br>
+                        c) 75%<br>
+                        d) 20%<br>
+                        e) 10%
+                    </div>
+                    <textarea id="task2" placeholder="Show your working and fraction answers..." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 3: Converting Percentages to Decimals</div>
+                    <div class="question-text">
+                        Convert these percentages to decimals:
+                        <br><br>
+                        a) 50%<br>
+                        b) 25%<br>
+                        c) 75%<br>
+                        d) 5%<br>
+                        e) 100%
+                    </div>
+                    <textarea id="task3" placeholder="Show your working and decimal answers..." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 4: Converting Fractions to Percentages</div>
+                    <div class="question-text">
+                        Convert these fractions to percentages:
+                        <br><br>
+                        a) 1/2<br>
+                        b) 1/4<br>
+                        c) 3/4<br>
+                        d) 1/5<br>
+                        e) 1/10
+                    </div>
+                    <textarea id="task4" placeholder="Show your working and percentage answers..." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 5: Finding Percentages of Amounts</div>
+                    <div class="question-text">
+                        Calculate these. Show your working:
+                        <br><br>
+                        a) 50% of 60<br>
+                        b) 25% of 80<br>
+                        c) 10% of 50<br>
+                        d) 75% of 40<br>
+                        e) 20% of 30
+                    </div>
+                    <textarea id="task5" placeholder="Show your working and answers..." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 6: Word Problems</div>
+                    <div class="question-text">
+                        Solve these word problems. Show your working:
+                        <br><br>
+                        a) In a class of 30 students, 60% are girls. How many girls are in the class?<br>
+                        b) A shirt costs £40. There's a 25% discount. How much do you save?<br>
+                        c) Tom scored 80% on a test with 50 questions. How many questions did he get correct?<br>
+                        d) A pizza has 8 slices. If you eat 3 slices, what percentage of the pizza did you eat?
+                    </div>
+                    <textarea id="task6" style="min-height: 200px;" placeholder="Show working and write your answers..." autocomplete="off"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Reflection</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection:</div>
+                    <div class="question-text">What does "percent" mean? How are percentages, fractions, and decimals related? What's the easiest way to find 10% of a number? Can you think of three real-life situations where percentages are used?</div>
+                    <textarea id="reflection" placeholder="Write your reflection here..." autocomplete="off"></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 7" required readonly autocomplete="off">
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        function validateAnswer(answer) {
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            if (answer.length < 8) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            if (/(.)\1{5,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            const hasNumbers = /\d/.test(answer);
+            const hasMathSymbols = /[+\-×÷=<>/%]/.test(answer) || answer.includes('×') || answer.includes('÷');
+            const hasLetters = /[a-zA-Z]/.test(answer);
+            
+            if (!hasNumbers && !hasMathSymbols && !hasLetters) {
+                return { valid: false, reason: 'no content' };
+            }
+            
+            if (!hasNumbers && !hasMathSymbols) {
+                if (answer.length < 15 || answer.split(/\s+/).length < 4) {
+                    return { valid: false, reason: 'not enough detail' };
+                }
+            }
+            
+            if (hasNumbers) {
+                const numberCount = (answer.match(/\d/g) || []).length;
+                if (numberCount < 2) {
+                    return { valid: false, reason: 'needs more numbers' };
+                }
+            }
+            
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 3) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            if (/^[.\s]+$/.test(answer) || /^[0-9\s]+$/.test(answer) && answer.trim().length < 10) {
+                return { valid: false, reason: 'needs more detail' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                task1: document.getElementById('task1').value.trim(),
+                task2: document.getElementById('task2').value.trim(),
+                task3: document.getElementById('task3').value.trim(),
+                task4: document.getElementById('task4').value.trim(),
+                task5: document.getElementById('task5').value.trim(),
+                task6: document.getElementById('task6').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const taskNum = key === 'reflection' ? 'Reflection' : key.replace('task', 'Task ').toUpperCase();
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${taskNum} is empty. Please complete all tasks.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${taskNum} is too short. Please show your working and answers (at least 8 characters).`;
+                            break;
+                        case 'no content':
+                            errorMessage = `${taskNum} doesn't contain any numbers, maths symbols, or working. Please show your calculations.`;
+                            break;
+                        case 'not enough detail':
+                            errorMessage = `${taskNum} needs more detail. Please show your working, not just answers.`;
+                            break;
+                        case 'needs more numbers':
+                            errorMessage = `${taskNum} needs to show more numbers or calculations. Please include your working.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${taskNum} contains too many repeating characters. Please show genuine working.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${taskNum} doesn't have enough variety. Please show your working with numbers and calculations.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 7 - Percentages: Understanding Percent');
+            formData.append('yearGroup', 'Year-7');
+            formData.append('subject', 'Maths-Practice');
+            
+            let fileContent = `YEAR 7 - PERCENTAGES: UNDERSTANDING PERCENT\n`;
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const taskTitles = {
+                task1: 'TASK 1: Understanding Percentages',
+                task2: 'TASK 2: Converting Percentages to Fractions',
+                task3: 'TASK 3: Converting Percentages to Decimals',
+                task4: 'TASK 4: Converting Fractions to Percentages',
+                task5: 'TASK 5: Finding Percentages of Amounts',
+                task6: 'TASK 6: Word Problems',
+                reflection: 'REFLECTION: Percentages'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${taskTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Percentages.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

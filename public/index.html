@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School100 - EvolveOne</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>School100</h1>
+            <p class="subtitle">Upload your work directly - no sign-in required</p>
+        </header>
+
+        <main>
+            <div class="cards-grid">
+                <!-- KS3 Upload Card -->
+                <div class="card ks3-card">
+                    <div class="card-header">
+                        <h2>KS3 Students</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Year 7, 8 & 9 students upload your work here.</p>
+                        <button class="btn btn-primary" onclick="openUploadModal('ks3')">
+                            Upload KS3 Work
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- KS4 Upload Card -->
+                <div class="card ks4-card">
+                    <div class="card-header">
+                        <h2>KS4 Students</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Year 10 & 11 students upload your work here.</p>
+                        <button class="btn btn-primary" onclick="openUploadModal('ks4')">
+                            Upload KS4 Work
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 100% Resources Card -->
+                <div class="card resources-card">
+                    <div class="card-header">
+                        <h2>100% Resources</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Access academic resources for English, Maths, Sport, and King's Trust.</p>
+                        <button class="btn btn-secondary" onclick="window.location.href='resources.html'">
+                            View Resources
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="help-section">
+                <h3>Need Help?</h3>
+                <ul class="help-list">
+                    <li><strong>KS3</strong> refers to Key Stage 3 (Years 7-9)</li>
+                    <li><strong>KS4</strong> refers to Key Stage 4 (Years 10-11)</li>
+                    <li>You can upload PDFs, Word documents, PowerPoints, images, and more</li>
+                    <li>Please enter your name so we can identify your work</li>
+                    <li>Maximum file size is 50MB per upload</li>
+                    <li><strong>Tip:</strong> Press ESC to close any open windows</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 EvolveOne Education. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upload Your Work</h2>
+                <button class="close-btn" onclick="closeUploadModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadForm">
+                    <input type="hidden" id="keyStage" name="keyStage">
+                    
+                    <div class="form-group">
+                        <label for="studentName">Your Name *</label>
+                        <input type="text" id="studentName" name="studentName" required 
+                               placeholder="e.g. John Smith">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assignmentTitle">Assignment Title (optional)</label>
+                        <input type="text" id="assignmentTitle" name="assignmentTitle" 
+                               placeholder="e.g. Geography Project">
+                    </div>
+
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📎</div>
+                        <p class="upload-text">Drag and drop your file here</p>
+                        <p class="upload-subtext">or</p>
+                        <label for="fileInput" class="btn btn-file">
+                            Choose File
+                        </label>
+                        <input type="file" id="fileInput" name="file" style="display: none;" required>
+                        <p class="upload-info">Accepted: PDF, Word, PowerPoint, Excel, Images (Max 50MB)</p>
+                    </div>
+
+                    <div id="filePreview" class="file-preview" style="display: none;">
+                        <p><strong>Selected file:</strong> <span id="fileName"></span></p>
+                        <p><strong>Size:</strong> <span id="fileSize"></span></p>
+                    </div>
+
+                    <div id="uploadProgress" class="progress-container" style="display: none;">
+                        <div class="progress-bar" id="progressBar"></div>
+                        <p class="progress-text" id="progressText">Uploading...</p>
+                    </div>
+
+                    <div id="uploadResult" class="upload-result" style="display: none;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        Upload File
+                    </button>
+                    
+                    <div id="uploadHistory" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h4 style="color: white; margin-bottom: 0.75rem; font-size: 0.95rem;">Recent Uploads</h4>
+                        <div id="historyList" style="max-height: 150px; overflow-y: auto;"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resources Modal -->
+    <div id="resourcesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>King Trust Resources</h2>
+                <button class="close-btn" onclick="closeResourcesModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="resourcesList" class="resources-list">
+                    <p class="loading-text">Loading resources...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness & Health: Staying Active</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .reading-passage {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .reading-passage p {
+            margin-bottom: 1rem;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #78350f;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #065f46;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #047857;
+            line-height: 1.7;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Fitness & Health: Staying Active</h1>
+            <div class="meta">
+                <span>Year 7 Sport - Academic</span>
+                <span>60 minutes</span>
+                <span>Fitness & Health</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Staying Fit and Healthy!</h2>
+                <p>Being active and fit helps you feel good, play better, and stay healthy! You'll explore about different types of fitness, why exercise is important, and how to stay active in fun ways!</p>
+            </div>
+
+            <div class="section">
+                <h2>Understanding Fitness</h2>
+                <p><strong>Fitness</strong> means being able to do physical activities without getting too tired. There are different types of fitness:</p>
+
+                <div class="example-box">
+                    <strong>1. Cardiovascular Fitness (Cardio):</strong>
+                    <p>This is about your heart and lungs. Activities like running, swimming, and cycling make your heart stronger and help you breathe better.</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>2. Strength:</strong>
+                    <p>This is about how strong your muscles are. Activities like climbing, lifting, and pushing make your muscles stronger.</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>3. Flexibility:</strong>
+                    <p>This is about how bendy you are. Stretching and yoga help you move more easily and prevent injuries.</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>4. Endurance:</strong>
+                    <p>This is about how long you can keep going. Activities like long-distance running or cycling build endurance.</p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>Key Points About Fitness:</strong>
+                    <ul>
+                        <li>Different activities build different types of fitness</li>
+                        <li>Being fit helps you play sport better</li>
+                        <li>Fitness makes you feel good and gives you energy</li>
+                        <li>You can improve your fitness by practising regularly</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: Why Exercise is Important</h2>
+                <p>Exercise has many benefits for your body and mind:</p>
+
+                <div class="example-box">
+                    <strong>Physical Benefits:</strong>
+                    <p>• Makes your heart and lungs stronger</p>
+                    <p>• Builds strong bones and muscles</p>
+                    <p>• Helps you maintain a healthy weight</p>
+                    <p>• Gives you more energy</p>
+                    <p>• Helps you sleep better</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Mental Benefits:</strong>
+                    <p>• Makes you feel happier</p>
+                    <p>• Reduces stress and worry</p>
+                    <p>• Boosts your confidence</p>
+                    <p>• Helps you concentrate better</p>
+                    <p>• Makes you feel proud of what you can do</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>How Much Exercise?</strong>
+                    <p>Experts recommend at least 60 minutes of physical activity every day. This can be playing sport, walking, cycling, dancing, or any activity that gets you moving!</p>
+                </div>
+
+                <h3>Answer these questions about fitness and health:</h3>
+
+                <div class="question-box">
+                    <div class="question-number">Question 1:</div>
+                    <div class="question-text">What is the difference between cardiovascular fitness and strength? Give an example of an activity that builds each type.</div>
+                    <textarea id="answer1" placeholder="Write your answer here... Think about fairness and how the game would change." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 2:</div>
+                    <div class="question-text">Why do you think exercise makes you feel happier? What happens to your body when you exercise that might make you feel good?</div>
+                    <textarea id="answer2" placeholder="Write your answer here... Think about how rules affect the pace of the game." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 3:</div>
+                    <div class="question-text">Why is flexibility important for playing sport? How can being more flexible help prevent injuries?</div>
+                    <textarea id="answer3" placeholder="Write your answer here... Think about how rules protect players." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 4:</div>
+                    <div class="question-text">Describe three different ways you can stay active. Think about activities you enjoy doing.</div>
+                    <textarea id="answer4" placeholder="Write your answer here... Think about fairness and consistency." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 5:</div>
+                    <div class="question-text">How does being fit help you play sport better? Give examples of how different types of fitness help in different sports.</div>
+                    <textarea id="answer5" placeholder="Write your answer here... Think about a sport you play or watch." autocomplete="off"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Building Your Fitness</h2>
+                <p>You can improve your fitness by doing different activities regularly:</p>
+
+                <div class="example-box">
+                    <strong>Ways to Build Fitness:</strong>
+                    <p>• <strong>Play sport:</strong> Football, basketball, netball, tennis - any sport you enjoy!</p>
+                    <p>• <strong>Walk or cycle:</strong> Instead of being driven, walk or cycle places</p>
+                    <p>• <strong>Dance:</strong> Dancing is great exercise and fun!</p>
+                    <p>• <strong>Active games:</strong> Tag, hide and seek, playground games</p>
+                    <p>• <strong>Help at home:</strong> Gardening, cleaning, walking the dog</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Setting Goals:</strong>
+                    <p>Set small goals to improve your fitness. For example:</p>
+                    <p>• "I'll run for 5 minutes without stopping"</p>
+                    <p>• "I'll do 10 push-ups"</p>
+                    <p>• "I'll walk to school twice this week"</p>
+                    <p>When you reach a goal, set a new one!</p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>Staying Motivated:</strong>
+                    <ul>
+                        <li>Choose activities you enjoy</li>
+                        <li>Exercise with friends</li>
+                        <li>Set small, achievable goals</li>
+                        <li>Celebrate your progress</li>
+                        <li>Remember how good you feel after exercise</li>
+                    </ul>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 6:</div>
+                    <div class="question-text">Why do you think it's recommended to do at least 60 minutes of activity every day? What happens if you don't get enough exercise?</div>
+                    <textarea id="answer6" placeholder="Write your answer here... Think about the seriousness of different rule breaks." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 7:</div>
+                    <div class="question-text">Describe a fitness goal you could set for yourself. How would you work towards achieving it?</div>
+                    <textarea id="answer7" placeholder="Write your answer here... Think about how different sports handle rule breaking." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 8:</div>
+                    <div class="question-text">How can exercising with friends make it more fun and help you stay motivated? Give examples.</div>
+                    <textarea id="answer8" placeholder="Write your answer here... Think about trust and fairness in sport." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 9:</div>
+                    <div class="question-text">What activities do you enjoy that keep you active? How often do you do them? How do they make you feel?</div>
+                    <textarea id="answer9" placeholder="Write your answer here... Think about real examples or create a scenario." autocomplete="off"></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 10:</div>
+                    <div class="question-text">Why is it important to balance exercise with rest? What happens if you exercise too much without resting?</div>
+                    <textarea id="answer10" placeholder="Write your answer here... Think about how understanding rules improves performance." autocomplete="off"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Think About It</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection Question:</div>
+                    <div class="question-text">What have you learned about fitness and health? How will you use this knowledge to stay active and healthy?</div>
+                    <textarea id="reflection" placeholder="Write your reflection here... Think about what you learned today."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 7" required readonly autocomplete="off">
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        // Enhanced validation function
+        function validateAnswer(answer) {
+            // Must have content
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            // Minimum 10 characters
+            if (answer.length < 10) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            // Minimum 2 words
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 2) {
+                return { valid: false, reason: 'not enough words' };
+            }
+            
+            // Check for repeating characters (e.g., "aaaa", "1111")
+            if (/(.)\1{3,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            // Check for repeating words (e.g., "boot boot boot")
+            const wordPattern = /(\b\w+\b)(\s+\1){2,}/i;
+            if (wordPattern.test(answer)) {
+                return { valid: false, reason: 'repeating words' };
+            }
+            
+            // Minimum 4 different characters
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 4) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            // Check for common English words (at least one meaningful word)
+            const commonWords = [
+                'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+                'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+                'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+                'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+                'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+                'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+                'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+                'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+                'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+                'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+                'is', 'was', 'are', 'been', 'has', 'had', 'were', 'said', 'did', 'having',
+                'marcus', 'maya', 'amara', 'shed', 'school', 'feeling', 'nervous', 'worried', 'happy',
+                'friendly', 'helpful', 'scared', 'excited', 'curious', 'kind', 'text', 'shows',
+                'suggests', 'because', 'character', 'evidence', 'passage', 'demonstrates'
+            ];
+            
+            const answerWords = answer.toLowerCase().split(/\s+/);
+            const hasCommonWord = answerWords.some(word => 
+                commonWords.includes(word.replace(/[.,!?;:]/, ''))
+            );
+            
+            if (!hasCommonWord) {
+                return { valid: false, reason: 'no recognizable words' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                answer1: document.getElementById('answer1').value.trim(),
+                answer2: document.getElementById('answer2').value.trim(),
+                answer3: document.getElementById('answer3').value.trim(),
+                answer4: document.getElementById('answer4').value.trim(),
+                answer5: document.getElementById('answer5').value.trim(),
+                answer6: document.getElementById('answer6').value.trim(),
+                answer7: document.getElementById('answer7').value.trim(),
+                answer8: document.getElementById('answer8').value.trim(),
+                answer9: document.getElementById('answer9').value.trim(),
+                answer10: document.getElementById('answer10').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Validate all answers
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const questionNum = key === 'reflection' ? 'Reflection' : key.replace('answer', 'Question ');
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${questionNum} is empty. Please complete all questions.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${questionNum} is too short. Please provide a more detailed answer (at least 10 characters).`;
+                            break;
+                        case 'not enough words':
+                            errorMessage = `${questionNum} needs more words. Please write at least 2 words.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${questionNum} contains repeating characters (e.g., "aaaa"). Please provide a genuine answer.`;
+                            break;
+                        case 'repeating words':
+                            errorMessage = `${questionNum} contains repeating words. Please provide a genuine answer.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${questionNum} doesn't have enough variety. Please use different characters and words.`;
+                            break;
+                        case 'no recognizable words':
+                            errorMessage = `${questionNum} doesn't contain recognizable English words. Please write genuine answers.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            // Create form data
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 7 - Fitness & Health: Staying Active');
+            formData.append('yearGroup', 'Year-7');
+            formData.append('subject', 'Sport-Academic');
+            
+            // Create text file content
+            let fileContent = `YEAR 7 - FITNESS & HEALTH: STAYING ACTIVE\n`;
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const questionTitles = {
+                answer1: 'Q1: Types of fitness',
+                answer2: 'Q2: Why exercise makes you happy',
+                answer3: 'Q3: Why flexibility important',
+                answer4: 'Q4: Ways to stay active',
+                answer5: 'Q5: How fitness helps in sport',
+                answer6: 'Q6: Why 60 minutes daily',
+                answer7: 'Q7: Fitness goals',
+                answer8: 'Q8: Exercising with friends',
+                answer9: 'Q9: Activities you enjoy',
+                answer10: 'Q10: Balance exercise and rest',
+                reflection: 'REFLECTION: What have you learned about fitness?'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${questionTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Fitness_Health.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+

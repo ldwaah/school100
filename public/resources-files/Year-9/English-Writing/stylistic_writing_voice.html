@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylistic Writing: Voice and Tone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .example-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #065f46;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #047857;
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .bad-example-box {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .bad-example-box strong {
+            color: #991b1b;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .bad-example-box p {
+            color: #991b1b;
+            line-height: 1.7;
+        }
+
+        .writing-prompt {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .writing-prompt strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .writing-prompt p {
+            color: #78350f;
+            line-height: 1.7;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #ede9fe;
+            border-left: 4px solid #7c3aed;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #5b21b6;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #6b21a8;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .senses-box {
+            background: #dbeafe;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .senses-box h4 {
+            color: #1e40af;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .senses-box ul {
+            margin-left: 1.5rem;
+            color: #1e40af;
+        }
+
+        .senses-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input[readonly] {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Stylistic Writing: Voice and Tone</h1>
+            <div class="meta">
+                <span>Year 9 English - Writing</span>
+                <span>60 minutes</span>
+                <span>Description Skills</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Paint Pictures with Words!</h2>
+                <p>Good descriptive writing helps readers see, hear, smell, taste, and feel what you're describing. This lesson will help you understand techniques to make your writing come alive and capture your reader's imagination!</p>
+            </div>
+
+            <div class="section">
+                <h2>Exploring Five Senses</h2>
+                <p>The best descriptions use the five senses to create vivid pictures in the reader's mind.</p>
+
+                <div class="senses-box">
+                    <h4>Sight (What can you see?)</h4>
+                    <ul>
+                        <li>Colours, shapes, sizes</li>
+                        <li>Light and shadow</li>
+                        <li>Movement</li>
+                    </ul>
+                </div>
+
+                <div class="senses-box">
+                    <h4>Sound (What can you hear?)</h4>
+                    <ul>
+                        <li>Loud or quiet noises</li>
+                        <li>Musical sounds, voices, nature</li>
+                        <li>Silence can be described too!</li>
+                    </ul>
+                </div>
+
+                <div class="senses-box">
+                    <h4>Touch (What can you feel?)</h4>
+                    <ul>
+                        <li>Textures: rough, smooth, soft, hard</li>
+                        <li>Temperature: hot, cold, warm, freezing</li>
+                        <li>Physical sensations</li>
+                    </ul>
+                </div>
+
+                <div class="senses-box">
+                    <h4>Smell (What can you smell?)</h4>
+                    <ul>
+                        <li>Pleasant or unpleasant odours</li>
+                        <li>Strong or faint scents</li>
+                        <li>Familiar smells that remind you of things</li>
+                    </ul>
+                </div>
+
+                <div class="senses-box">
+                    <h4>Taste (What can you taste?)</h4>
+                    <ul>
+                        <li>Sweet, sour, bitter, salty, spicy</li>
+                        <li>Fresh or stale</li>
+                        <li>Delicious or disgusting</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>Basic Sentence:</strong>
+                    <p>"The beach was nice."</p>
+                    
+                    <strong>Improved with Senses:</strong>
+                    <p>"The golden sand felt warm beneath my feet. Salty sea air filled my lungs as waves crashed rhythmically against the shore. Seagulls cried overhead whilst the sun sparkled on the turquoise water."</p>
+                    
+                    <strong>Why it's better:</strong> It uses sight (golden sand, sparkling water), touch (warm), smell (salty air), and sound (waves crashing, seagulls crying).
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: Show, Don't Tell</h2>
+                <p>Instead of telling readers how something is, show them through actions, details, and descriptions.</p>
+
+                <div class="bad-example-box">
+                    <strong>Telling (Boring):</strong>
+                    <p>"Emma was nervous."</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Showing (Interesting):</strong>
+                    <p>"Emma's hands trembled as she clutched her notes. Her heart hammered against her ribs, and she wiped sweaty palms on her skirt."</p>
+                    <strong>Why it's better:</strong> We see Emma's nervousness through physical details rather than being told about it.
+                </div>
+
+                <div class="tips-box">
+                    <strong>How to Show, Not Tell:</strong>
+                    <ul>
+                        <li>Describe body language and actions</li>
+                        <li>Use facial expressions</li>
+                        <li>Include physical reactions</li>
+                        <li>Show how characters interact with their surroundings</li>
+                        <li>Let readers figure out emotions from clues</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Powerful Vocabulary</h2>
+                <p>Choose interesting words instead of boring, overused ones.</p>
+
+                <div class="example-box">
+                    <strong>Instead of "walked":</strong>
+                    <p>marched, strolled, crept, wandered, strutted, stumbled, tiptoed, stomped</p>
+                    
+                    <strong>Instead of "said":</strong>
+                    <p>whispered, shouted, muttered, announced, exclaimed, mumbled, yelled, replied</p>
+                    
+                    <strong>Instead of "nice":</strong>
+                    <p>pleasant, delightful, charming, wonderful, lovely, enjoyable, splendid</p>
+                    
+                    <strong>Instead of "big":</strong>
+                    <p>enormous, gigantic, vast, huge, massive, colossal, immense</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Final Challenge: Figurative Language</h2>
+                <p>Use similes and metaphors to create interesting comparisons.</p>
+
+                <div class="example-box">
+                    <strong>Simile (using "like" or "as"):</strong>
+                    <p>"The stars twinkled like diamonds in the night sky."</p>
+                    <p>"Her eyes were as blue as the ocean."</p>
+                    
+                    <strong>Metaphor (saying something IS something else):</strong>
+                    <p>"The classroom was a zoo during break time."</p>
+                    <p>"Time is money."</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Your Writing Tasks</h2>
+
+                <div class="writing-prompt">
+                    <strong>Task 1: Describe a Place</strong>
+                    <p>Choose ONE of these settings and write a descriptive paragraph (at least 100 words). Use at least THREE different senses.</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: #78350f;">
+                        <li>A busy market</li>
+                        <li>A spooky forest at night</li>
+                        <li>A cosy café on a rainy day</li>
+                        <li>Your favourite place</li>
+                    </ul>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 1: Place Description</div>
+                    <div class="question-text">Write your descriptive paragraph here. Remember to use sensory details!</div>
+                    <textarea id="task1" placeholder="Start writing here... Aim for at least 100 words."></textarea>
+                </div>
+
+                <div class="writing-prompt">
+                    <strong>Task 2: Show, Don't Tell</strong>
+                    <p>Rewrite these "telling" sentences to "show" the emotion or situation instead. Make each one at least 2 sentences long.</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: #78350f;">
+                        <li>a) The house was old.</li>
+                        <li>b) Jake was excited.</li>
+                        <li>c) The food was disgusting.</li>
+                    </ul>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2a: The house was old</div>
+                    <div class="question-text">Rewrite this to SHOW that the house is old using descriptive details.</div>
+                    <textarea id="task2a" placeholder="Write your improved version here..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2b: Jake was excited</div>
+                    <div class="question-text">Rewrite this to SHOW Jake's excitement through actions and physical details.</div>
+                    <textarea id="task2b" placeholder="Write your improved version here..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2c: The food was disgusting</div>
+                    <div class="question-text">Rewrite this to SHOW that the food is disgusting using sensory details.</div>
+                    <textarea id="task2c" placeholder="Write your improved version here..."></textarea>
+                </div>
+
+                <div class="writing-prompt">
+                    <strong>Task 3: Character Description</strong>
+                    <p>Describe a person (real or imaginary) in detail. Include their appearance, how they move, and small details that make them interesting. Write at least 80 words.</p>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 3: Character Description</div>
+                    <div class="question-text">Write your character description here.</div>
+                    <textarea id="task3" placeholder="Describe your character in detail..."></textarea>
+                </div>
+
+                <div class="writing-prompt">
+                    <strong>Task 4: Weather Description</strong>
+                    <p>Describe a storm (or sunny day, or snowy morning) using powerful vocabulary and at least TWO examples of similes or metaphors. At least 60 words.</p>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 4: Weather Description</div>
+                    <div class="question-text">Write your weather description here. Include similes or metaphors!</div>
+                    <textarea id="task4" placeholder="Start your weather description..."></textarea>
+                </div>
+
+                <div class="writing-prompt">
+                    <strong>Task 5: Creative Challenge</strong>
+                    <p>Describe an everyday object (like a pencil, chair, or phone) in the most interesting way possible, as if the reader has never seen it before. Use creative comparisons and sensory details. At least 50 words.</p>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 5: Creative Object Description</div>
+                    <div class="question-text">Choose an everyday object and describe it creatively.</div>
+                    <textarea id="task5" placeholder="Write your creative description..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Think About It</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection:</div>
+                    <div class="question-text">Which descriptive technique do you find most effective (five senses, show don't tell, powerful vocabulary, or figurative language)? Why? Which one do you want to practise more?</div>
+                    <textarea id="reflection" placeholder="Write your reflection here..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 9" required readonly>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        function validateAnswer(answer) {
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            if (answer.length < 20) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 4) {
+                return { valid: false, reason: 'not enough words' };
+            }
+            
+            if (/(.)\1{3,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            const wordPattern = /(\b\w+\b)(\s+\1){2,}/i;
+            if (wordPattern.test(answer)) {
+                return { valid: false, reason: 'repeating words' };
+            }
+            
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 6) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            const commonWords = [
+                'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+                'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+                'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+                'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+                'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+                'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+                'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+                'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+                'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+                'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+                'is', 'was', 'are', 'been', 'has', 'had', 'were', 'said', 'did', 'having'
+            ];
+            
+            const answerWords = answer.toLowerCase().split(/\s+/);
+            const hasCommonWord = answerWords.some(word => 
+                commonWords.includes(word.replace(/[.,!?;:]/, ''))
+            );
+            
+            if (!hasCommonWord) {
+                return { valid: false, reason: 'no recognizable words' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                task1: document.getElementById('task1').value.trim(),
+                task2a: document.getElementById('task2a').value.trim(),
+                task2b: document.getElementById('task2b').value.trim(),
+                task2c: document.getElementById('task2c').value.trim(),
+                task3: document.getElementById('task3').value.trim(),
+                task4: document.getElementById('task4').value.trim(),
+                task5: document.getElementById('task5').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const taskNum = key === 'reflection' ? 'Reflection' : key.replace('task', 'Task ').toUpperCase();
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${taskNum} is empty. Please complete all writing tasks.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${taskNum} is too short. Please write more (at least 20 characters).`;
+                            break;
+                        case 'not enough words':
+                            errorMessage = `${taskNum} needs more words. Please write at least 4 words.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${taskNum} contains repeating characters. Please write genuine content.`;
+                            break;
+                        case 'repeating words':
+                            errorMessage = `${taskNum} contains repeating words. Please write genuine content.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${taskNum} doesn't have enough variety. Please use different words.`;
+                            break;
+                        case 'no recognizable words':
+                            errorMessage = `${taskNum} doesn't contain recognizable English words. Please write genuine answers.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 9 - Varied Sentence Structures: Creating Rhythm and Flow');');
+            formData.append('yearGroup', 'Year-9');
+            formData.append('subject', 'English-Writing');
+            
+            let fileContent = `YEAR 9 - STYLISTIC WRITING
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const taskTitles = {
+                task1: 'TASK 1: Place Description',
+                task2a: 'TASK 2a: The house was old (showing)',
+                task2b: 'TASK 2b: Jake was excited (showing)',
+                task2c: 'TASK 2c: The food was disgusting (showing)',
+                task3: 'TASK 3: Character Description',
+                task4: 'TASK 4: Weather Description',
+                task5: 'TASK 5: Creative Object Description',
+                reflection: 'REFLECTION: Favourite technique'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${taskTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Sentence_Structures.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

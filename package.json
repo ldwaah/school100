@@ -1,0 +1,74 @@
+{
+  "name": "school100",
+  "version": "1.0.0",
+  "description": "Student work upload portal for EvolveOne Education",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "authorize": "node authorize.js",
+    "electron": "electron .",
+    "dist": "electron-builder",
+    "generate-manifest": "node generate-resources-manifest.js",
+    "build": "npm run generate-manifest"
+  },
+  "keywords": [
+    "education",
+    "file-upload",
+    "student-portal"
+  ],
+  "author": "EvolveOne Education",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "googleapis": "^134.0.0",
+    "dotenv": "^16.4.5",
+    "busboy": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "education.evolveone.school100",
+    "productName": "School100",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "public/**/*",
+      "server.js",
+      "google-drive-service.js",
+      "authorize.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "GOOGLE_DRIVE_SETUP.md",
+        "to": "GOOGLE_DRIVE_SETUP.md"
+      },
+      {
+        "from": "AUTO_START_SETUP.md",
+        "to": "AUTO_START_SETUP.md"
+      }
+    ],
+    "mac": {
+      "target": [
+        "zip",
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        "zip",
+        "portable",
+        "nsis"
+      ],
+      "sign": null
+    }
+  }
+}
+

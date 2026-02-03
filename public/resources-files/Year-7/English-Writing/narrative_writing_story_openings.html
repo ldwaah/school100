@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrative Writing: Story Openings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .example-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #065f46;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #047857;
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .example-box em {
+            color: #059669;
+            font-style: italic;
+        }
+
+        .bad-example-box {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .bad-example-box strong {
+            color: #991b1b;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .bad-example-box p {
+            color: #991b1b;
+            line-height: 1.7;
+        }
+
+        .writing-prompt {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .writing-prompt strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .writing-prompt p {
+            color: #78350f;
+            line-height: 1.7;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #ede9fe;
+            border-left: 4px solid #7c3aed;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #5b21b6;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #6b21a8;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input[readonly] {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Narrative Writing: Story Openings</h1>
+            <div class="meta">
+                <span>Year 7 English - Writing</span>
+                <span>60 minutes</span>
+                <span>Story Beginnings</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Hook Your Reader from the Start!</h2>
+                <p>The opening of a story is crucial. It needs to grab the reader's attention and make them want to read on. In this resource, you'll discover different techniques to write engaging story openings that hook your audience from the very first line!</p>
+            </div>
+
+            <div class="section">
+                <h2>Getting Started: Why Story Openings Matter</h2>
+                <p>The first few sentences of your story are the most important. They need to:</p>
+                <ul style="margin-left: 2rem; color: #374151;">
+                    <li style="margin-bottom: 0.5rem;">Grab the reader's attention immediately</li>
+                    <li style="margin-bottom: 0.5rem;">Set the scene or introduce a character</li>
+                    <li style="margin-bottom: 0.5rem;">Create curiosity or intrigue</li>
+                    <li style="margin-bottom: 0.5rem;">Establish the tone (scary, funny, mysterious, exciting)</li>
+                    <li style="margin-bottom: 0.5rem;">Make readers want to know what happens next</li>
+                </ul>
+
+                <div class="bad-example-box">
+                    <strong>Boring Opening:</strong>
+                    <p>"My name is Tom. I am 12 years old. I live in London. This is a story about something that happened to me."</p>
+                    <strong>Why it's boring:</strong> Too much telling, no action, no intrigue, no atmosphere.
+                </div>
+
+                <div class="example-box">
+                    <strong>Exciting Opening:</strong>
+                    <p>"The footsteps behind me were getting closer. My heart pounded as I ran through the dark alley, knowing I had to reach home before midnight – or they would find me."</p>
+                    <strong>Why it works:</strong> Creates immediate tension, raises questions (Who's following? Why midnight?), uses action.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: Five Powerful Opening Techniques</h2>
+
+                <h3>1. Action Opening</h3>
+                <p>Start in the middle of something happening.</p>
+                <div class="example-box">
+                    <strong>Example:</strong>
+                    <p><em>"The car skidded off the road, tyres screeching, as Dad swerved to avoid the deer."</em></p>
+                    <strong>Effect:</strong> Immediately exciting and dramatic. Readers want to know what happens next.
+                </div>
+
+                <h3>2. Dialogue Opening</h3>
+                <p>Start with someone speaking.</p>
+                <div class="example-box">
+                    <strong>Example:</strong>
+                    <p><em>"You're not seriously going in there, are you?" whispered Maya, staring at the abandoned house.</em></p>
+                    <strong>Effect:</strong> Creates intrigue and introduces character voices naturally.
+                </div>
+
+                <h3>3. Setting Opening</h3>
+                <p>Paint a vivid picture of where the story takes place.</p>
+                <div class="example-box">
+                    <strong>Example:</strong>
+                    <p><em>"The forest was silent except for the crunch of dead leaves beneath my feet. Twisted branches reached across the path like skeletal fingers, blocking out the fading sunlight."</em></p>
+                    <strong>Effect:</strong> Creates atmosphere and sets the mood (in this case, spooky).
+                </div>
+
+                <h3>4. Mystery Opening</h3>
+                <p>Start with something strange or unexplained.</p>
+                <div class="example-box">
+                    <strong>Example:</strong>
+                    <p><em>"The box appeared on my doorstep with no address, no stamp, and no note – just my name written in silver ink."</em></p>
+                    <strong>Effect:</strong> Raises questions that make readers curious.
+                </div>
+
+                <h3>5. Character Opening</h3>
+                <p>Introduce your main character in an interesting way.</p>
+                <div class="example-box">
+                    <strong>Example:</strong>
+                    <p><em>"Nobody believed Jake when he said he could talk to animals, but the stray cat sitting on his windowsill knew better."</em></p>
+                    <strong>Effect:</strong> Tells us something intriguing about the character immediately.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Opening Dos and Don'ts</h2>
+
+                <div class="tips-box">
+                    <strong>DO:</strong>
+                    <ul>
+                        <li>Start with action, dialogue, or an interesting detail</li>
+                        <li>Create questions in the reader's mind</li>
+                        <li>Use vivid, descriptive language</li>
+                        <li>Establish your story's tone quickly</li>
+                        <li>Make every word count</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box" style="background: #fee2e2; border-left: 4px solid #ef4444;">
+                    <strong style="color: #991b1b;">DON'T:</strong>
+                    <ul style="color: #991b1b;">
+                        <li>Start with "My name is..." or "I'm going to tell you about..."</li>
+                        <li>Begin with someone waking up (unless it's really unusual)</li>
+                        <li>Give too much background information straight away</li>
+                        <li>Use boring, predictable phrases</li>
+                        <li>Explain everything – leave some mystery!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Final Challenge: Your Writing Tasks</h2>
+
+                <div class="question-box">
+                    <div class="question-number">Task 1: Identify the Technique</div>
+                    <div class="question-text">
+                        Read these three story openings and identify which technique each one uses (Action, Dialogue, Setting, Mystery, or Character). Explain your choice.
+                        <br><br>
+                        <strong>a)</strong> "The spaceship's engines roared to life, shaking the ground beneath our feet as we counted down: three, two, one..."
+                        <br><br>
+                        <strong>b)</strong> "I've always been able to remember everything I've ever read – every single word, every page. It's not as great as you'd think."
+                        <br><br>
+                        <strong>c)</strong> "The circus tent stood alone in the empty field, its red and white stripes faded and torn. Strange music drifted from inside, though the circus had closed years ago."
+                    </div>
+                    <textarea id="task1" placeholder="Identify each technique and explain..."></textarea>
+                </div>
+
+                <div class="writing-prompt">
+                    <strong>Task 2: Rewrite Boring Openings</strong>
+                    <p>Take these boring story openings and rewrite them using one of the five techniques. Make them exciting!</p>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2a: Rewrite</div>
+                    <div class="question-text">
+                        <strong>Boring version:</strong> "My sister and I were walking home from school one day when something happened."
+                        <br><br>
+                        Rewrite this opening to make it gripping. Use any technique you like!
+                    </div>
+                    <textarea id="task2a" placeholder="Write your improved opening..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2b: Rewrite</div>
+                    <div class="question-text">
+                        <strong>Boring version:</strong> "There was a haunted house at the end of our street. Everyone was scared of it."
+                        <br><br>
+                        Rewrite this opening to create atmosphere and intrigue.
+                    </div>
+                    <textarea id="task2b" placeholder="Write your improved opening..."></textarea>
+                </div>
+
+                <div class="writing-prompt">
+                    <strong>Task 3: Create Your Own Openings</strong>
+                    <p>Write THREE different story openings (2-3 sentences each) for the prompt below. Use a DIFFERENT technique for each one.</p>
+                    <p style="margin-top: 0.75rem;"><strong>Story Prompt:</strong> A teenager discovers they have a special ability.</p>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 3a: Opening Version 1</div>
+                    <div class="question-text">Write your first opening. State which technique you're using.</div>
+                    <textarea id="task3a" placeholder="Technique: ___________\n\nYour opening..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 3b: Opening Version 2</div>
+                    <div class="question-text">Write your second opening using a DIFFERENT technique.</div>
+                    <textarea id="task3b" placeholder="Technique: ___________\n\nYour opening..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 3c: Opening Version 3</div>
+                    <div class="question-text">Write your third opening using a DIFFERENT technique again.</div>
+                    <textarea id="task3c" placeholder="Technique: ___________\n\nYour opening..."></textarea>
+                </div>
+
+                <div class="writing-prompt">
+                    <strong>Task 4: Extended Story Opening</strong>
+                    <p>Choose ONE of your openings from Task 3 (or create a new one) and continue writing for at least 100 words. Develop the opening into a full first paragraph that establishes setting, character, or conflict.</p>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 4: Extended Opening</div>
+                    <div class="question-text">Write your extended story opening here (100+ words).</div>
+                    <textarea id="task4" style="min-height: 200px;" placeholder="Continue your story opening..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 5: Analysis</div>
+                    <div class="question-text">
+                        Think about your favourite book or story. How does it begin? Describe the opening and explain why you think it works well. Which technique does it use?
+                    </div>
+                    <textarea id="task5" placeholder="Describe and analyse the opening..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Reflection</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection:</div>
+                    <div class="question-text">Which opening technique do you find easiest to write? Which is most challenging? Why? Which type of opening do you prefer to read?</div>
+                    <textarea id="reflection" placeholder="Write your reflection here..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 7" required readonly>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        function validateAnswer(answer) {
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            if (answer.length < 20) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 4) {
+                return { valid: false, reason: 'not enough words' };
+            }
+            
+            if (/(.)\1{3,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            const wordPattern = /(\b\w+\b)(\s+\1){2,}/i;
+            if (wordPattern.test(answer)) {
+                return { valid: false, reason: 'repeating words' };
+            }
+            
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 6) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            const commonWords = [
+                'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+                'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+                'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+                'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+                'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+                'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+                'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+                'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+                'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+                'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+                'is', 'was', 'are', 'been', 'has', 'had', 'were', 'said', 'did', 'having'
+            ];
+            
+            const answerWords = answer.toLowerCase().split(/\s+/);
+            const hasCommonWord = answerWords.some(word => 
+                commonWords.includes(word.replace(/[.,!?;:]/, ''))
+            );
+            
+            if (!hasCommonWord) {
+                return { valid: false, reason: 'no recognizable words' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                task1: document.getElementById('task1').value.trim(),
+                task2a: document.getElementById('task2a').value.trim(),
+                task2b: document.getElementById('task2b').value.trim(),
+                task3a: document.getElementById('task3a').value.trim(),
+                task3b: document.getElementById('task3b').value.trim(),
+                task3c: document.getElementById('task3c').value.trim(),
+                task4: document.getElementById('task4').value.trim(),
+                task5: document.getElementById('task5').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const taskNum = key === 'reflection' ? 'Reflection' : key.replace('task', 'Task ').toUpperCase();
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${taskNum} is empty. Please complete all writing tasks.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${taskNum} is too short. Please write more (at least 20 characters).`;
+                            break;
+                        case 'not enough words':
+                            errorMessage = `${taskNum} needs more words. Please write at least 4 words.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${taskNum} contains repeating characters. Please write genuine content.`;
+                            break;
+                        case 'repeating words':
+                            errorMessage = `${taskNum} contains repeating words. Please write genuine content.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${taskNum} doesn't have enough variety. Please use different words.`;
+                            break;
+                        case 'no recognizable words':
+                            errorMessage = `${taskNum} doesn't contain recognizable English words. Please write genuine answers.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 7 - Narrative Writing: Story Openings');
+            formData.append('yearGroup', 'Year-7');
+            formData.append('subject', 'English-Writing');
+            
+            let fileContent = `YEAR 7 - NARRATIVE WRITING: STORY OPENINGS\n`;
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const taskTitles = {
+                task1: 'TASK 1: Identify the Technique',
+                task2a: 'TASK 2a: Rewrite - Walking home',
+                task2b: 'TASK 2b: Rewrite - Haunted house',
+                task3a: 'TASK 3a: Opening Version 1',
+                task3b: 'TASK 3b: Opening Version 2',
+                task3c: 'TASK 3c: Opening Version 3',
+                task4: 'TASK 4: Extended Story Opening',
+                task5: 'TASK 5: Favourite Book Analysis',
+                reflection: 'REFLECTION: Easiest/hardest technique'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${taskTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Story_Openings.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

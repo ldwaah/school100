@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing for Different Purposes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .section ul {
+            margin-left: 2rem;
+            color: #374151;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .purpose-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .purpose-box h4 {
+            color: #065f46;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .purpose-box p {
+            color: #047857;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .purpose-box strong {
+            color: #065f46;
+        }
+
+        .example-box {
+            background: #ede9fe;
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #5b21b6;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #6b21a8;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-box em {
+            color: #7c3aed;
+            font-style: italic;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #78350f;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input[readonly] {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Writing for Different Purposes</h1>
+            <div class="meta">
+                <span>Year 7 English - Writing</span>
+                <span>60 minutes</span>
+                <span>Audience & Purpose</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Match Your Writing to the Task!</h2>
+                <p>Different writing tasks need different styles, tones, and structures. A letter to a friend is very different from a formal report or an exciting story. Today, you'll practise adapting your writing for different purposes and audiences!</p>
+            </div>
+
+            <div class="section">
+                <h2>Getting Started: Three Main Purposes</h2>
+
+                <div class="purpose-box">
+                    <h4>1. TO INFORM (Explain or Teach)</h4>
+                    <p><strong>Examples:</strong> News articles, reports, instructions, textbooks, letters of information</p>
+                    <p><strong>Features:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: #047857;">
+                        <li>Clear, factual language</li>
+                        <li>Organised structure (headings, subheadings)</li>
+                        <li>Present tense usually</li>
+                        <li>Third person (he, she, they)</li>
+                        <li>Technical or specific vocabulary</li>
+                    </ul>
+                </div>
+
+                <div class="purpose-box">
+                    <h4>2. TO PERSUADE (Convince or Argue)</h4>
+                    <p><strong>Examples:</strong> Adverts, speeches, opinion articles, reviews, persuasive letters</p>
+                    <p><strong>Features:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: #047857;">
+                        <li>Emotive language</li>
+                        <li>Rhetorical questions</li>
+                        <li>Strong opinions</li>
+                        <li>Direct address (you)</li>
+                        <li>AFORREST techniques</li>
+                    </ul>
+                </div>
+
+                <div class="purpose-box">
+                    <h4>3. TO ENTERTAIN (Tell a Story)</h4>
+                    <p><strong>Examples:</strong> Stories, poems, diary entries, creative descriptions</p>
+                    <p><strong>Features:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: #047857;">
+                        <li>Descriptive language</li>
+                        <li>Dialogue</li>
+                        <li>Past tense usually</li>
+                        <li>First or third person</li>
+                        <li>Varied sentences for effect</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: Formal vs Informal</h2>
+
+                <h3>Formal Writing</h3>
+                <p><strong>Used for:</strong> Letters to officials, reports, job applications, essays</p>
+                <div class="tips-box">
+                    <strong>Features:</strong>
+                    <ul>
+                        <li>No slang or contractions (write "do not" not "don't")</li>
+                        <li>Third person</li>
+                        <li>Polite, respectful tone</li>
+                        <li>Proper greetings (Dear Sir/Madam, Yours sincerely)</li>
+                        <li>Full sentences, correct grammar</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>Formal Example:</strong>
+                    <p><em>"I am writing to inform you that the school library will be closed for refurbishment from 5th January. We apologise for any inconvenience this may cause."</em></p>
+                </div>
+
+                <h3>Informal Writing</h3>
+                <p><strong>Used for:</strong> Letters to friends/family, diary entries, casual emails, texts</p>
+                <div class="tips-box">
+                    <strong>Features:</strong>
+                    <ul>
+                        <li>Contractions allowed (can't, won't, we're)</li>
+                        <li>First person</li>
+                        <li>Friendly, chatty tone</li>
+                        <li>Casual greetings (Hi, Hey, Dear...)</li>
+                        <li>Can use slang and short sentences</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>Informal Example:</strong>
+                    <p><em>"Hi! Just thought I'd let you know the library's shutting for a few weeks from January. Annoying, right? We'll have to study at mine instead!"</em></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Matching Tone to Audience</h2>
+
+                <p><strong>Audience</strong> = who you're writing for. Always consider:</p>
+                <ul>
+                    <li>Their age (child, teenager, adult)</li>
+                    <li>Their relationship to you (friend, teacher, stranger)</li>
+                    <li>Their knowledge level (expert or beginner)</li>
+                    <li>What they expect from your writing</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Same Message, Different Audiences:</strong>
+                    <p><strong>To a friend:</strong> <em>"Can't believe we've got a test on Friday! Want to revise together?"</em></p>
+                    <p><strong>To your teacher:</strong> <em>"I was wondering if we could arrange a revision session before Friday's test?"</em></p>
+                    <p><strong>To the head teacher:</strong> <em>"I am writing to request additional revision support for the forthcoming examination on Friday."</em></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Final Challenge: Your Writing Tasks</h2>
+
+                <div class="question-box">
+                    <div class="question-number">Task 1: Identify Purpose & Formality</div>
+                    <div class="question-text">
+                        For each text type below, state:
+                        <br>a) Its purpose (inform, persuade, or entertain)
+                        <br>b) Whether it should be formal or informal
+                        <br>c) One key feature it should include
+                        <br><br>
+                        1. A story about a haunted house
+                        <br>2. A letter to your local MP about littering
+                        <br>3. An article explaining how smartphones work
+                        <br>4. A diary entry about your birthday
+                        <br>5. A review persuading people to watch a film
+                    </div>
+                    <textarea id="task1" placeholder="Answer for each text type..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2: Formal Letter</div>
+                    <div class="question-text">
+                        Write a formal letter (80-100 words) to your head teacher suggesting a new after-school club and explaining why it would benefit students. Use formal language, proper letter format, and persuasive techniques.
+                    </div>
+                    <textarea id="task2" style="min-height: 200px;" placeholder="Dear [Head Teacher's name],\n\nWrite your formal letter..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 3: Informal Email</div>
+                    <div class="question-text">
+                        Now write an informal email (60-80 words) to a friend describing the same after-school club idea and trying to persuade them to join. Use casual language and a friendly tone.
+                    </div>
+                    <textarea id="task3" style="min-height: 180px;" placeholder="Hi [friend's name],\n\nWrite your informal email..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 4: Informative Writing</div>
+                    <div class="question-text">
+                        Write an informative paragraph (70-90 words) explaining to Year 6 students what they can expect when they start secondary school. Be clear, factual, and helpful. Think about your audience - what would they want to know?
+                    </div>
+                    <textarea id="task4" style="min-height: 180px;" placeholder="Write your informative paragraph..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 5: Narrative Writing</div>
+                    <div class="question-text">
+                        Write the opening of a story (80-100 words) designed to entertain readers aged 11-13. Make it exciting, use descriptive language, and create a hook that makes them want to read more.
+                    </div>
+                    <textarea id="task5" style="min-height: 200px;" placeholder="Write your story opening..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 6: Same Topic, Three Purposes</div>
+                    <div class="question-text">
+                        Choose ONE topic: mobile phones, school uniform, or homework.
+                        <br><br>
+                        Write THREE short pieces (3-4 sentences each) on your chosen topic:
+                        <br>a) To INFORM (explain facts about it)
+                        <br>b) To PERSUADE (argue for or against it)
+                        <br>c) To ENTERTAIN (tell a funny or interesting story involving it)
+                    </div>
+                    <textarea id="task6" style="min-height: 220px;" placeholder="Write your three pieces..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Reflection</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection:</div>
+                    <div class="question-text">Which type of writing do you find easiest - informative, persuasive, or entertaining? Which is hardest? Why? Have you ever written something and had to change your tone for a different audience? How did you adapt it?</div>
+                    <textarea id="reflection" placeholder="Write your reflection here..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 7" required readonly>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        function validateAnswer(answer) {
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            if (answer.length < 20) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 4) {
+                return { valid: false, reason: 'not enough words' };
+            }
+            
+            if (/(.)\1{3,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            const wordPattern = /(\b\w+\b)(\s+\1){2,}/i;
+            if (wordPattern.test(answer)) {
+                return { valid: false, reason: 'repeating words' };
+            }
+            
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 6) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            const commonWords = [
+                'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+                'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+                'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+                'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+                'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+                'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+                'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+                'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+                'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+                'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+                'is', 'was', 'are', 'been', 'has', 'had', 'were', 'said', 'did', 'having'
+            ];
+            
+            const answerWords = answer.toLowerCase().split(/\s+/);
+            const hasCommonWord = answerWords.some(word => 
+                commonWords.includes(word.replace(/[.,!?;:]/, ''))
+            );
+            
+            if (!hasCommonWord) {
+                return { valid: false, reason: 'no recognizable words' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                task1: document.getElementById('task1').value.trim(),
+                task2: document.getElementById('task2').value.trim(),
+                task3: document.getElementById('task3').value.trim(),
+                task4: document.getElementById('task4').value.trim(),
+                task5: document.getElementById('task5').value.trim(),
+                task6: document.getElementById('task6').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const taskNum = key === 'reflection' ? 'Reflection' : key.replace('task', 'Task ').toUpperCase();
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${taskNum} is empty. Please complete all writing tasks.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${taskNum} is too short. Please write more (at least 20 characters).`;
+                            break;
+                        case 'not enough words':
+                            errorMessage = `${taskNum} needs more words. Please write at least 4 words.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${taskNum} contains repeating characters. Please write genuine content.`;
+                            break;
+                        case 'repeating words':
+                            errorMessage = `${taskNum} contains repeating words. Please write genuine content.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${taskNum} doesn't have enough variety. Please use different words.`;
+                            break;
+                        case 'no recognizable words':
+                            errorMessage = `${taskNum} doesn't contain recognizable English words. Please write genuine answers.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 7 - Writing for Different Purposes');
+            formData.append('yearGroup', 'Year-7');
+            formData.append('subject', 'English-Writing');
+            
+            let fileContent = `YEAR 7 - WRITING FOR DIFFERENT PURPOSES\n`;
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const taskTitles = {
+                task1: 'TASK 1: Identify Purpose & Formality',
+                task2: 'TASK 2: Formal Letter',
+                task3: 'TASK 3: Informal Email',
+                task4: 'TASK 4: Informative Writing',
+                task5: 'TASK 5: Narrative Writing',
+                task6: 'TASK 6: Same Topic, Three Purposes',
+                reflection: 'REFLECTION: Writing for different purposes'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${taskTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Different_Purposes.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

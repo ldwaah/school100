@@ -1,0 +1,42 @@
+CHECKLIST: Before Uploading to Netlify
+=======================================
+
+Make sure these folders/files are in your School100 folder:
+
+✅ public/
+   ✅ resources-files/ (should be ~7.7MB - contains all lesson HTML files)
+   ✅ resources-manifest.json (generated file listing all resources)
+   ✅ index.html
+   ✅ resources.html
+   ✅ app.js
+   ✅ resources-app.js
+   ✅ styles.css
+   ✅ resources-styles.css
+
+✅ netlify/
+   ✅ functions/
+      ✅ upload.js
+      ✅ year-resources.js
+      ✅ api-resources.js
+
+✅ netlify.toml (configuration file)
+
+✅ package.json
+
+✅ generate-resources-manifest.js
+
+IMPORTANT: 
+- The resources-files folder MUST be included (it's 7.7MB)
+- The resources-manifest.json file MUST be in the public/ folder
+- If you're zipping, make sure resources-files/ is NOT excluded
+
+To verify resources-files is there:
+1. Open School100 folder
+2. Go to public/
+3. You should see resources-files/ folder
+4. It should contain Year-7, Year-8, Year-9, Year-10, Year-11 folders
+
+If resources-files is missing:
+- It might have been excluded during zip/upload
+- Make sure to include it when uploading to Netlify
+

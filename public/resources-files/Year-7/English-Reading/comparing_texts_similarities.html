@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparing Texts: Similarities and Differences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .reading-passage {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .reading-passage p {
+            margin-bottom: 1rem;
+        }
+
+        .text-a-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .text-b-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #ede9fe;
+            border-left: 4px solid #7c3aed;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #5b21b6;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #6b21a8;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input[readonly] {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Comparing Texts: Similarities and Differences</h1>
+            <div class="meta">
+                <span>Year 7 English - Reading</span>
+                <span>60 minutes</span>
+                <span>Comparison Skills</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Spot the Connections!</h2>
+                <p>Comparing texts means looking at how they are similar and different. This skill helps you understand different perspectives, analyse writing styles, and think critically. Today, you'll become an expert at comparing texts!</p>
+            </div>
+
+            <div class="section">
+                <h2>Getting Started: What to Compare</h2>
+                <p>When comparing texts, look at several key areas:</p>
+
+                <div class="tips-box">
+                    <strong>Areas to Compare:</strong>
+                    <ul>
+                        <li><strong>Topic/Subject:</strong> What are they about? Same or different?</li>
+                        <li><strong>Purpose:</strong> Why were they written? (inform, persuade, entertain)</li>
+                        <li><strong>Audience:</strong> Who are they for? (children, adults, experts)</li>
+                        <li><strong>Tone:</strong> How do they sound? (serious, funny, friendly, formal)</li>
+                        <li><strong>Language:</strong> What words and sentences are used?</li>
+                        <li><strong>Structure:</strong> How are they organised?</li>
+                        <li><strong>Viewpoint:</strong> What opinion or perspective is presented?</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <strong>Useful Comparing Words:</strong>
+                    <ul>
+                        <li><strong>Similarities:</strong> both, similarly, likewise, also, too, in the same way</li>
+                        <li><strong>Differences:</strong> however, whereas, unlike, in contrast, on the other hand, but</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: First Comparison - Pet Descriptions</h2>
+                <p>Read these two descriptions and compare them.</p>
+
+                <div class="text-a-box">
+                    <strong>Text A: Charlie the Cat</strong>
+                    <p style="color: #1e40af; margin-top: 0.75rem;">Charlie is a fluffy ginger cat with bright green eyes and a white patch on his chest. He loves sleeping in sunny spots and purring loudly when you stroke him. Every morning, he waits by the kitchen door for his breakfast, meowing impatiently. Charlie is gentle with children and enjoys playing with feather toys. At night, he curls up at the foot of the bed, keeping everyone's feet warm.</p>
+                </div>
+
+                <div class="text-b-box">
+                    <strong>Text B: Max the Dog</strong>
+                    <p style="color: #92400e; margin-top: 0.75rem;">Max is an energetic black Labrador with a wagging tail that never stops. He bounds around the park, chasing tennis balls with endless enthusiasm. Every morning, he barks excitedly at the door, desperate for his walk. Max loves meeting new people and dogs, jumping up to greet everyone. At night, he sprawls across the living room floor, exhausted from his adventures.</p>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 1:</div>
+                    <div class="question-text">What is similar about both texts? Find at least TWO similarities.</div>
+                    <textarea id="answer1" placeholder="Write your answer here..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 2:</div>
+                    <div class="question-text">What is different about the two pets? Describe TWO differences.</div>
+                    <textarea id="answer2" placeholder="Write your answer here..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 3:</div>
+                    <div class="question-text">How is the tone of both texts similar? What mood do both writers create?</div>
+                    <textarea id="answer3" placeholder="Write your answer here..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Holiday Adverts</h2>
+                <p>Compare these two holiday advertisements.</p>
+
+                <div class="text-a-box">
+                    <strong>Text A: Adventure Camp</strong>
+                    <p style="color: #1e40af; margin-top: 0.75rem;"><strong>Looking for excitement?</strong> Adventure Camp offers the ultimate action-packed holiday! Try rock climbing, zip-lining, and kayaking in the beautiful Lake District. Our expert instructors ensure safety whilst you push your limits. Challenge yourself, make new friends, and create unforgettable memories. Perfect for adventurous 11-16 year olds who love being active outdoors. Book now – spaces fill fast! From £450 per week.</p>
+                </div>
+
+                <div class="text-b-box">
+                    <strong>Text B: Seaside Retreat</strong>
+                    <p style="color: #92400e; margin-top: 0.75rem;"><strong>Need to relax?</strong> Seaside Retreat provides the perfect peaceful getaway. Enjoy sandy beaches, gentle coastal walks, and stunning sunsets. Our comfortable accommodation includes a heated pool and games room. Activities include art workshops, nature walks, and evening campfires. Ideal for families wanting quality time together in a calm, beautiful setting. Limited availability – book your escape today! From £380 per week.</p>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 4:</div>
+                    <div class="question-text">Both texts are advertisements. What is the purpose of both? What do they both want readers to do?</div>
+                    <textarea id="answer4" placeholder="Write your answer here..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 5:</div>
+                    <div class="question-text">How are the two holidays different? Compare what each one offers.</div>
+                    <textarea id="answer5" placeholder="Write your answer here..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 6:</div>
+                    <div class="question-text">Compare the language used in both adverts. How do both writers try to persuade readers? Give examples.</div>
+                    <textarea id="answer6" placeholder="Write your answer here..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Final Challenge: News Articles</h2>
+                <p>Read these two articles about the same event and compare them.</p>
+
+                <div class="text-a-box">
+                    <strong>Text A: Local News Report</strong>
+                    <p style="color: #1e40af; margin-top: 0.75rem; margin-bottom: 0.75rem;"><strong>Student Raises £2,000 for Charity</strong></p>
+                    <p style="color: #1e40af;">Year 9 student Emma Johnson completed a sponsored 10-kilometre run on Saturday, raising an impressive £2,000 for Cancer Research UK. The event took place at Riverside Park and attracted over 100 participants.</p>
+                    <p style="color: #1e40af;">Emma, 14, trained for three months to prepare for the challenge. "I wanted to help because my grandmother is currently receiving cancer treatment," she explained. "Every pound raised could help save lives."</p>
+                    <p style="color: #1e40af;">The fundraiser was organised by Westfield Academy, with support from local businesses who donated prizes for a raffle. Emma's headteacher, Mrs. Roberts, praised her dedication and fundraising success.</p>
+                </div>
+
+                <div class="text-b-box">
+                    <strong>Text B: School Newsletter</strong>
+                    <p style="color: #92400e; margin-top: 0.75rem; margin-bottom: 0.75rem;"><strong>Amazing Emma - Our Fundraising Hero!</strong></p>
+                    <p style="color: #92400e;">We are incredibly proud to announce that our fantastic Year 9 student, Emma Johnson, has raised a phenomenal £2,000 for Cancer Research UK!</p>
+                    <p style="color: #92400e;">Emma's inspirational achievement came after months of determined training. Supported by her family, friends, and teachers, she completed a challenging 10km run last Saturday. Over 100 people joined the event, creating a wonderful community atmosphere.</p>
+                    <p style="color: #92400e;">Emma's motivation came from a very personal place – supporting her beloved grandmother through cancer treatment. Her dedication shows what can be achieved when students put their minds to something meaningful.</p>
+                    <p style="color: #92400e;">Well done, Emma! You're an absolute star and a brilliant role model for our whole school community!</p>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 7:</div>
+                    <div class="question-text">What information appears in BOTH texts? List THREE facts that are the same in both.</div>
+                    <textarea id="answer7" placeholder="Write your answer here..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 8:</div>
+                    <div class="question-text">How is the tone different in the two texts? Compare how each writer presents Emma's achievement.</div>
+                    <textarea id="answer8" placeholder="Write your answer here..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 9:</div>
+                    <div class="question-text">Compare the language used in both texts. Find examples of words that show the different tones.</div>
+                    <textarea id="answer9" placeholder="Write your answer here..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Question 10:</div>
+                    <div class="question-text">Both texts are about the same event but written for different audiences. Who is each text written for? How can you tell?</div>
+                    <textarea id="answer10" placeholder="Write your answer here..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Your Comparison</h2>
+                <div class="question-box">
+                    <div class="question-number">Question 11:</div>
+                    <div class="question-text">Look back at all the text pairs you've compared today (pets, holidays, news articles). What have you learned about how the same topic can be written about in different ways? Explain with examples.</div>
+                    <textarea id="answer11" placeholder="Write your answer here..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Think About It</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection Question:</div>
+                    <div class="question-text">Why is it useful to compare different texts on the same topic? How does this skill help you in everyday life when reading news, adverts, or information online? Give at least two reasons.</div>
+                    <textarea id="reflection" placeholder="Write your reflection here..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 7" required readonly>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        function validateAnswer(answer) {
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            if (answer.length < 10) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 2) {
+                return { valid: false, reason: 'not enough words' };
+            }
+            
+            if (/(.)\1{3,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            const wordPattern = /(\b\w+\b)(\s+\1){2,}/i;
+            if (wordPattern.test(answer)) {
+                return { valid: false, reason: 'repeating words' };
+            }
+            
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 4) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            const commonWords = [
+                'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+                'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+                'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+                'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+                'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+                'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+                'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+                'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+                'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+                'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+                'is', 'was', 'are', 'been', 'has', 'had', 'were', 'said', 'did', 'having',
+                'both', 'similar', 'different', 'compare', 'text', 'whereas', 'however'
+            ];
+            
+            const answerWords = answer.toLowerCase().split(/\s+/);
+            const hasCommonWord = answerWords.some(word => 
+                commonWords.includes(word.replace(/[.,!?;:]/, ''))
+            );
+            
+            if (!hasCommonWord) {
+                return { valid: false, reason: 'no recognizable words' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                answer1: document.getElementById('answer1').value.trim(),
+                answer2: document.getElementById('answer2').value.trim(),
+                answer3: document.getElementById('answer3').value.trim(),
+                answer4: document.getElementById('answer4').value.trim(),
+                answer5: document.getElementById('answer5').value.trim(),
+                answer6: document.getElementById('answer6').value.trim(),
+                answer7: document.getElementById('answer7').value.trim(),
+                answer8: document.getElementById('answer8').value.trim(),
+                answer9: document.getElementById('answer9').value.trim(),
+                answer10: document.getElementById('answer10').value.trim(),
+                answer11: document.getElementById('answer11').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const questionNum = key === 'reflection' ? 'Reflection' : key.replace('answer', 'Question ');
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${questionNum} is empty. Please complete all questions.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${questionNum} is too short. Please provide a more detailed answer (at least 10 characters).`;
+                            break;
+                        case 'not enough words':
+                            errorMessage = `${questionNum} needs more words. Please write at least 2 words.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${questionNum} contains repeating characters. Please provide a genuine answer.`;
+                            break;
+                        case 'repeating words':
+                            errorMessage = `${questionNum} contains repeating words. Please provide a genuine answer.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${questionNum} doesn't have enough variety. Please use different characters and words.`;
+                            break;
+                        case 'no recognizable words':
+                            errorMessage = `${questionNum} doesn't contain recognizable English words. Please write genuine answers.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 7 - Comparing Texts: Similarities and Differences');
+            formData.append('yearGroup', 'Year-7');
+            formData.append('subject', 'English-Reading');
+            
+            let fileContent = `YEAR 7 - COMPARING TEXTS: SIMILARITIES AND DIFFERENCES\n`;
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const questionTitles = {
+                answer1: 'Q1: Similarities between pet texts',
+                answer2: 'Q2: Differences between pets',
+                answer3: 'Q3: Similar tone in both pet texts',
+                answer4: 'Q4: Purpose of both holiday adverts',
+                answer5: 'Q5: How holidays are different',
+                answer6: 'Q6: Language comparison in adverts',
+                answer7: 'Q7: Facts in both news articles',
+                answer8: 'Q8: Different tones in news articles',
+                answer9: 'Q9: Language examples showing tone',
+                answer10: 'Q10: Different audiences for each text',
+                answer11: 'Q11: What you learned about comparing',
+                reflection: 'REFLECTION: Why comparing texts is useful'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${questionTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Comparing_Texts.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

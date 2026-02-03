@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialogue Writing: Bringing Characters to Life</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .section ul {
+            margin-left: 2rem;
+            color: #374151;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #065f46;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #047857;
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .bad-example-box {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .bad-example-box strong {
+            color: #991b1b;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .bad-example-box p {
+            color: #991b1b;
+            line-height: 1.7;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #ede9fe;
+            border-left: 4px solid #7c3aed;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #5b21b6;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #6b21a8;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .rule-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .rule-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .rule-box p {
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input[readonly] {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Dialogue Writing: Bringing Characters to Life</h1>
+            <div class="meta">
+                <span>Year 7 English - Writing</span>
+                <span>60 minutes</span>
+                <span>Speech & Conversation</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Make Your Characters Talk!</h2>
+                <p>Dialogue brings stories to life. When written well, it reveals personality, moves the plot forward, and makes characters feel real. Today, you'll master the rules of dialogue punctuation and learn how to write natural, engaging conversations!</p>
+            </div>
+
+            <div class="section">
+                <h2>Getting Started: Dialogue Punctuation Rules</h2>
+                <p>Getting dialogue punctuation right is essential. Follow these rules:</p>
+
+                <div class="rule-box">
+                    <strong>Rule 1: Speech marks go around the spoken words</strong>
+                    <p>"I can't believe we won!" shouted Amira.</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>Rule 2: Punctuation goes INSIDE the speech marks</strong>
+                    <p>"Where are you going?" asked Tom.</p>
+                    <p>"I don't know," she replied.</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>Rule 3: Start a new line for each new speaker</strong>
+                    <p>"Did you finish your homework?" Mum asked.<br>"Not yet," I admitted.</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>Rule 4: Use commas with speech tags (said, asked, replied)</strong>
+                    <p>"I'm starving," said Jake.<br>Sarah whispered, "Me too."</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>Rule 5: Use exclamation or question marks when appropriate</strong>
+                    <p>"Watch out!" yelled Emma.<br>"What's happening?" asked Ben.</p>
+                </div>
+
+                <div class="bad-example-box">
+                    <strong>Incorrect:</strong>
+                    <p>Tom said I'm going home.<br>Sarah replied, Where are you going.</p>
+                    <strong>Problems:</strong> No speech marks, wrong punctuation.
+                </div>
+
+                <div class="example-box">
+                    <strong>Correct:</strong>
+                    <p>"I'm going home," said Tom.<br>"Where are you going?" replied Sarah.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: Alternatives to 'Said'</h2>
+                <p>Using varied dialogue tags makes writing more interesting:</p>
+
+                <div class="tips-box">
+                    <strong>When someone speaks quietly:</strong>
+                    <ul>
+                        <li>whispered, murmured, muttered, mumbled</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <strong>When someone speaks loudly:</strong>
+                    <ul>
+                        <li>shouted, yelled, bellowed, announced, exclaimed</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <strong>When someone asks:</strong>
+                    <ul>
+                        <li>asked, questioned, enquired, wondered</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <strong>When someone answers:</strong>
+                    <ul>
+                        <li>replied, answered, responded, retorted</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <strong>When someone is emotional:</strong>
+                    <ul>
+                        <li>cried, sobbed, laughed, giggled, sighed, groaned, snapped</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Writing Natural Dialogue</h2>
+                <p>Good dialogue sounds like real people talking. Here's how:</p>
+
+                <h3>Use contractions and informal language</h3>
+                <div class="bad-example-box">
+                    <strong>Unnatural:</strong>
+                    <p>"I cannot believe that we are going to be late. We will have to hurry."</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Natural:</strong>
+                    <p>"I can't believe we're gonna be late. We'll have to hurry!"</p>
+                </div>
+
+                <h3>Keep it short and snappy</h3>
+                <div class="bad-example-box">
+                    <strong>Too long:</strong>
+                    <p>"Well, I think that we should probably consider going to the cinema because there is a new film out that everyone has been talking about and it looks really good and I heard the reviews are excellent," said Emma.</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Better:</strong>
+                    <p>"Want to see that new film?" asked Emma. "Everyone's raving about it."</p>
+                </div>
+
+                <h3>Include interruptions and reactions</h3>
+                <div class="example-box">
+                    <strong>Realistic conversation:</strong>
+                    <p>"I was thinking we could—"<br>"Wait, did you hear that?" Jake interrupted.<br>"Hear what?"<br>"That noise. From upstairs."</p>
+                </div>
+
+                <h3>Show personality through speech</h3>
+                <ul>
+                    <li>A nervous person might use "um", "maybe", "I think"</li>
+                    <li>A confident person uses direct statements</li>
+                    <li>A bossy person gives commands</li>
+                    <li>Different ages speak differently (teenagers vs adults)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Final Challenge: Your Writing Tasks</h2>
+
+                <div class="question-box">
+                    <div class="question-number">Task 1: Fix the Punctuation</div>
+                    <div class="question-text">
+                        Rewrite these sentences with correct dialogue punctuation:
+                        <br><br>
+                        a) Are you coming to the party Tom asked<br>
+                        b) I dont know Sarah replied maybe<br>
+                        c) You have to come everyone will be there he said<br>
+                        d) Okay I'll think about it she sighed
+                    </div>
+                    <textarea id="task1" placeholder="Rewrite with correct punctuation..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2: Replace 'Said'</div>
+                    <div class="question-text">
+                        Rewrite this conversation replacing every 'said' with a more interesting dialogue tag. Make sure it fits the tone.
+                        <br><br>
+                        "Help!" said Emma.<br>
+                        "What's wrong?" said Jake.<br>
+                        "There's a huge spider in my room," said Emma.<br>
+                        "Where?" said Jake.<br>
+                        "On the ceiling. Get it away!" said Emma.
+                    </div>
+                    <textarea id="task2" placeholder="Rewrite with varied dialogue tags..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 3: Write a Two-Person Conversation</div>
+                    <div class="question-text">
+                        Write a conversation (at least 8 lines of dialogue) between two friends who disagree about something. Show their personalities through how they speak. Use correct punctuation and varied dialogue tags.
+                        <br><br>
+                        <strong>Topic ideas:</strong> Where to go at the weekend, which film to watch, whether homework is important, best type of pet
+                    </div>
+                    <textarea id="task3" style="min-height: 200px;" placeholder="Write your conversation..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 4: Add Dialogue to Narrative</div>
+                    <div class="question-text">
+                        Read this paragraph with NO dialogue. Rewrite it including conversation to make it more interesting (at least 100 words).
+                        <br><br>
+                        <strong>Paragraph:</strong> "Mia and her brother found an old map in the attic. They decided to follow it. They thought it might lead to treasure. They were excited but also a bit scared. They wondered if they should tell their parents."
+                    </div>
+                    <textarea id="task4" style="min-height: 180px;" placeholder="Rewrite with dialogue included..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 5: Three-Way Conversation</div>
+                    <div class="question-text">
+                        Write a conversation between THREE people (at least 10 lines of dialogue total). The scenario: three students working on a group project, but one person hasn't done their part. Make each person's personality clear through their dialogue.
+                    </div>
+                    <textarea id="task5" style="min-height: 200px;" placeholder="Write your three-way conversation..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 6: Dialogue Analysis</div>
+                    <div class="question-text">
+                        Think of a conversation from a book, film, or TV show that you remember. What made it interesting or memorable? Was it funny, dramatic, mysterious? Describe the conversation and explain what made it effective.
+                    </div>
+                    <textarea id="task6" placeholder="Describe and analyse the dialogue..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Reflection</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection:</div>
+                    <div class="question-text">What do you find hardest about writing dialogue - the punctuation rules or making it sound natural? How can dialogue improve a story? Do you prefer reading stories with lots of dialogue or more description?</div>
+                    <textarea id="reflection" placeholder="Write your reflection here..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 7" required readonly>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        function validateAnswer(answer) {
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            if (answer.length < 20) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 4) {
+                return { valid: false, reason: 'not enough words' };
+            }
+            
+            if (/(.)\1{3,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            const wordPattern = /(\b\w+\b)(\s+\1){2,}/i;
+            if (wordPattern.test(answer)) {
+                return { valid: false, reason: 'repeating words' };
+            }
+            
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 6) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            const commonWords = [
+                'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+                'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+                'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+                'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+                'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+                'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+                'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+                'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+                'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+                'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+                'is', 'was', 'are', 'been', 'has', 'had', 'were', 'said', 'did', 'having'
+            ];
+            
+            const answerWords = answer.toLowerCase().split(/\s+/);
+            const hasCommonWord = answerWords.some(word => 
+                commonWords.includes(word.replace(/[.,!?;:]/, ''))
+            );
+            
+            if (!hasCommonWord) {
+                return { valid: false, reason: 'no recognizable words' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                task1: document.getElementById('task1').value.trim(),
+                task2: document.getElementById('task2').value.trim(),
+                task3: document.getElementById('task3').value.trim(),
+                task4: document.getElementById('task4').value.trim(),
+                task5: document.getElementById('task5').value.trim(),
+                task6: document.getElementById('task6').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const taskNum = key === 'reflection' ? 'Reflection' : key.replace('task', 'Task ').toUpperCase();
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${taskNum} is empty. Please complete all writing tasks.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${taskNum} is too short. Please write more (at least 20 characters).`;
+                            break;
+                        case 'not enough words':
+                            errorMessage = `${taskNum} needs more words. Please write at least 4 words.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${taskNum} contains repeating characters. Please write genuine content.`;
+                            break;
+                        case 'repeating words':
+                            errorMessage = `${taskNum} contains repeating words. Please write genuine content.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${taskNum} doesn't have enough variety. Please use different words.`;
+                            break;
+                        case 'no recognizable words':
+                            errorMessage = `${taskNum} doesn't contain recognizable English words. Please write genuine answers.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 7 - Dialogue Writing: Bringing Characters to Life');
+            formData.append('yearGroup', 'Year-7');
+            formData.append('subject', 'English-Writing');
+            
+            let fileContent = `YEAR 7 - DIALOGUE WRITING: BRINGING CHARACTERS TO LIFE\n`;
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const taskTitles = {
+                task1: 'TASK 1: Fix the Punctuation',
+                task2: 'TASK 2: Replace Said',
+                task3: 'TASK 3: Two-Person Conversation',
+                task4: 'TASK 4: Add Dialogue to Narrative',
+                task5: 'TASK 5: Three-Way Conversation',
+                task6: 'TASK 6: Dialogue Analysis',
+                reflection: 'REFLECTION: Writing dialogue'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${taskTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Dialogue_Writing.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

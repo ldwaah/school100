@@ -1,0 +1,56 @@
+SIMPLE NETLIFY DEPLOYMENT - DRAG & DROP
+========================================
+
+STEP 1: Prepare Folder
+----------------------
+Before uploading, EXCLUDE these folders/files:
+  ❌ node_modules/ (too large, not needed)
+  ❌ dist/ (build output, not needed)
+  ❌ uploads/ (local files, not needed)
+  ❌ .env (sensitive, use Netlify environment variables instead)
+  ❌ google-credentials.json (sensitive, use Netlify environment variables)
+  ❌ google-token.json (sensitive, use Netlify environment variables)
+
+STEP 2: Upload to Netlify
+-------------------------
+1. Go to: https://app.netlify.com
+2. Sign in (or create free account)
+3. Drag and drop your School100 folder onto the Netlify dashboard
+4. Wait for upload to complete
+
+STEP 3: Set Environment Variables
+---------------------------------
+1. In Netlify, go to: Site settings → Environment variables
+2. Add these 5 variables:
+
+   Variable: GOOGLE_CREDENTIALS
+   Value: [Copy entire contents of google-credentials.json file]
+
+   Variable: GOOGLE_TOKEN  
+   Value: [Copy entire contents of google-token.json file]
+
+   Variable: KS3_FOLDER_ID
+   Value: [Your KS3 Google Drive folder ID]
+
+   Variable: KS4_FOLDER_ID
+   Value: [Your KS4 Google Drive folder ID]
+
+   Variable: RESOURCES_FOLDER_ID
+   Value: [Your Resources Google Drive folder ID]
+
+STEP 4: Configure Build Settings
+--------------------------------
+1. Go to: Site settings → Build & deploy
+2. Set:
+   - Build command: (leave empty)
+   - Publish directory: public
+
+STEP 5: Deploy
+--------------
+1. Go to: Deploys tab
+2. Click "Trigger deploy" → "Deploy site"
+3. Wait for deployment to complete
+4. Your site URL will be: https://your-site-name.netlify.app
+
+DONE! Your app is now live on the web.
+

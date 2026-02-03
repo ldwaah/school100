@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punctuation Mastery: Commas, Apostrophes & Speech Marks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #1e3a8a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .intro-box p {
+            line-height: 1.7;
+            color: #1e40af;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #1e3a8a;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .rule-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .rule-box h4 {
+            color: #065f46;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .rule-box p {
+            color: #047857;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .rule-box strong {
+            color: #065f46;
+        }
+
+        .example-box {
+            background: #ede9fe;
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: #5b21b6;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .example-box p {
+            color: #6b21a8;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .bad-example-box {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .bad-example-box strong {
+            color: #991b1b;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .bad-example-box p {
+            color: #991b1b;
+            line-height: 1.7;
+        }
+
+        .question-box {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-box .question-number {
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-box .question-text {
+            color: #1f2937;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .tips-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tips-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box ul {
+            margin-left: 1.5rem;
+            color: #78350f;
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .submit-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input[readonly] {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .validation-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Punctuation Mastery: Commas, Apostrophes & Speech Marks</h1>
+            <div class="meta">
+                <span>Year 7 English - Vocabulary & SPaG</span>
+                <span>60 minutes</span>
+                <span>Punctuation Rules</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Master Essential Punctuation!</h2>
+                <p>Correct punctuation makes your writing clear and professional. Commas, apostrophes, and speech marks are three of the most important punctuation marks you'll use. Master them today!</p>
+            </div>
+
+            <div class="section">
+                <h2>Getting Started: Commas</h2>
+                <p>Commas help separate ideas and make sentences clearer. Here are the main rules:</p>
+
+                <div class="rule-box">
+                    <h4>1. In Lists</h4>
+                    <p>Use commas to separate items in a list (the last two items usually use "and").</p>
+                    <p><strong>Example:</strong> "I bought apples, oranges, bananas, and grapes."</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>2. After Introductory Words/Phrases</h4>
+                    <p>Use a comma after words like "However", "Firstly", "Meanwhile", or phrases that come before the main sentence.</p>
+                    <p><strong>Example:</strong> "However, I decided to go anyway."</p>
+                    <p><strong>Example:</strong> "After the match ended, we went home."</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>3. To Join Clauses</h4>
+                    <p>Use a comma before conjunctions (and, but, or, so) when joining two complete sentences.</p>
+                    <p><strong>Example:</strong> "I wanted to go out, but it was raining."</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>4. Around Extra Information</h4>
+                    <p>Use commas to separate extra information that could be removed without changing the meaning.</p>
+                    <p><strong>Example:</strong> "My friend, who lives next door, called me."</p>
+                </div>
+
+                <div class="bad-example-box">
+                    <strong>Wrong:</strong>
+                    <p>"I wanted to buy bread milk eggs and butter."</p>
+                    <p>"After finishing my homework I went outside."</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Correct:</strong>
+                    <p>"I wanted to buy bread, milk, eggs, and butter."</p>
+                    <p>"After finishing my homework, I went outside."</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Let's Practice: Apostrophes</h2>
+                <p>Apostrophes have two main uses:</p>
+
+                <div class="rule-box">
+                    <h4>1. Contractions (Shortening Words)</h4>
+                    <p>Use an apostrophe to show where letters are missing.</p>
+                    <p><strong>Examples:</strong></p>
+                    <p>do not → don't</p>
+                    <p>I am → I'm</p>
+                    <p>it is → it's</p>
+                    <p>we are → we're</p>
+                    <p>they have → they've</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>2. Possession (Showing Ownership)</h4>
+                    <p>Use an apostrophe to show something belongs to someone.</p>
+                    <p><strong>Singular:</strong> Add 's</p>
+                    <p>• "The girl's book" (the book belongs to the girl)</p>
+                    <p>• "James's bike" (the bike belongs to James)</p>
+                    <p><strong>Plural ending in s:</strong> Add ' after the s</p>
+                    <p>• "The girls' books" (books belong to multiple girls)</p>
+                    <p>• "The teachers' cars" (cars belong to multiple teachers)</p>
+                    <p><strong>Plural not ending in s:</strong> Add 's</p>
+                    <p>• "The children's toys" (toys belong to children)</p>
+                </div>
+
+                <div class="tips-box">
+                    <strong>Common Mistakes:</strong>
+                    <ul>
+                        <li><strong>its vs it's:</strong> "its" = belonging to it (no apostrophe). "it's" = it is (with apostrophe)</li>
+                        <li><strong>your vs you're:</strong> "your" = belonging to you. "you're" = you are</li>
+                        <li><strong>their vs they're:</strong> "their" = belonging to them. "they're" = they are</li>
+                    </ul>
+                </div>
+
+                <div class="bad-example-box">
+                    <strong>Wrong:</strong>
+                    <p>"The cats toy" (should be "cat's toy" or "cats' toy")</p>
+                    <p>"Its a nice day" (should be "It's a nice day")</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Correct:</strong>
+                    <p>"The cat's toy" (one cat owns the toy)</p>
+                    <p>"It's a nice day" (it is a nice day)</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Going Further: Speech Marks (Inverted Commas)</h2>
+                <p>Speech marks show when someone is speaking.</p>
+
+                <div class="rule-box">
+                    <h4>Rules for Speech Marks:</h4>
+                    <p><strong>1. Put speech marks around what is said:</strong></p>
+                    <p>"Hello," she said.</p>
+                    <p><strong>2. Punctuation goes INSIDE the speech marks:</strong></p>
+                    <p>"Are you ready?" he asked.</p>
+                    <p>"I don't know," she replied.</p>
+                    <p><strong>3. Start a new line for each new speaker:</strong></p>
+                    <p>"Where are you going?" asked Tom.</p>
+                    <p>"To the shop," replied Sarah.</p>
+                    <p><strong>4. Use commas with speech tags:</strong></p>
+                    <p>"I'm tired," he said.</p>
+                    <p>She whispered, "Be quiet."</p>
+                </div>
+
+                <div class="bad-example-box">
+                    <strong>Wrong:</strong>
+                    <p>Tom said I'm going home. (no speech marks)</p>
+                    <p>"Where are you" asked Sarah. (punctuation outside speech marks)</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Correct:</strong>
+                    <p>Tom said, "I'm going home."</p>
+                    <p>"Where are you?" asked Sarah.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Final Challenge: Your Practice Tasks</h2>
+
+                <div class="question-box">
+                    <div class="question-number">Task 1: Add Commas</div>
+                    <div class="question-text">
+                        Rewrite these sentences adding commas where needed:
+                        <br><br>
+                        a) I need to buy bread milk eggs and cheese.<br>
+                        b) However I decided to stay home.<br>
+                        c) After the lesson ended we went to lunch.<br>
+                        d) The dog which was very friendly wagged its tail.<br>
+                        e) I wanted to play football but it was raining.
+                    </div>
+                    <textarea id="task1" placeholder="Rewrite with commas added..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 2: Apostrophes - Contractions</div>
+                    <div class="question-text">
+                        Write the contractions for these word pairs:
+                        <br><br>
+                        a) cannot<br>
+                        b) you are<br>
+                        c) they will<br>
+                        d) she is<br>
+                        e) we have<br>
+                        f) it is
+                    </div>
+                    <textarea id="task2" placeholder="Write the contractions..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 3: Apostrophes - Possession</div>
+                    <div class="question-text">
+                        Rewrite these phrases using apostrophes to show possession:
+                        <br><br>
+                        a) the book belonging to the student<br>
+                        b) the cars belonging to the teachers<br>
+                        c) the hat belonging to James<br>
+                        d) the toys belonging to the children<br>
+                        e) the tail belonging to the cat
+                    </div>
+                    <textarea id="task3" placeholder="Rewrite with apostrophes..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 4: Fix Apostrophe Mistakes</div>
+                    <div class="question-text">
+                        Correct these sentences (some have wrong apostrophes, some are missing them):
+                        <br><br>
+                        a) Its a beautiful day.<br>
+                        b) The dogs toy was chewed.<br>
+                        c) Your going to be late.<br>
+                        d) The students books were left behind.<br>
+                        e) They're going to their house.
+                    </div>
+                    <textarea id="task4" placeholder="Correct all the mistakes..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 5: Add Speech Marks</div>
+                    <div class="question-text">
+                        Rewrite this conversation with correct speech marks and punctuation:
+                        <br><br>
+                        Tom said Where are you going<br>
+                        Sarah replied To the library<br>
+                        Tom asked Can I come<br>
+                        Sarah said Of course lets go together
+                    </div>
+                    <textarea id="task5" placeholder="Rewrite with speech marks..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 6: Fix All Punctuation</div>
+                    <div class="question-text">
+                        This paragraph has multiple punctuation errors. Rewrite it correctly:
+                        <br><br>
+                        <em>I went shopping yesterday I bought apples bananas oranges and milk. My friends bag was left at the shop so we went back to get it. Its red and it has her name on it she said Its mine thank you for finding it.</em>
+                    </div>
+                    <textarea id="task6" style="min-height: 150px;" placeholder="Rewrite correctly..."></textarea>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-number">Task 7: Create Your Own</div>
+                    <div class="question-text">
+                        Write THREE sentences of your own. Include:
+                        <br>• Sentence 1: A list with commas
+                        <br>• Sentence 2: An apostrophe showing possession
+                        <br>• Sentence 3: Speech marks with dialogue
+                    </div>
+                    <textarea id="task7" placeholder="Write your three sentences..."></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Reflection</h2>
+                <div class="question-box">
+                    <div class="question-number">Reflection:</div>
+                    <div class="question-text">Which punctuation mark do you find hardest to use correctly? Why? What's the difference between "its" and "it's"? Why is correct punctuation important in writing?</div>
+                    <textarea id="reflection" placeholder="Write your reflection here..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h2>Ready to Submit?</h2>
+                <form id="submissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name:</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Your Year Group:</label>
+                        <input type="text" id="studentClass" value="Year 7" required readonly>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit My Work</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                    <div class="success-message" id="successMessage">Your work has been submitted successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../resources-app.js"></script>
+    <script>
+        function validateAnswer(answer) {
+            if (!answer || answer.length === 0) {
+                return { valid: false, reason: 'empty' };
+            }
+            
+            if (answer.length < 10) {
+                return { valid: false, reason: 'too short' };
+            }
+            
+            const words = answer.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 3) {
+                return { valid: false, reason: 'not enough words' };
+            }
+            
+            if (/(.)\1{3,}/.test(answer)) {
+                return { valid: false, reason: 'repeating characters' };
+            }
+            
+            const wordPattern = /(\b\w+\b)(\s+\1){2,}/i;
+            if (wordPattern.test(answer)) {
+                return { valid: false, reason: 'repeating words' };
+            }
+            
+            const uniqueChars = new Set(answer.toLowerCase().replace(/\s/g, '')).size;
+            if (uniqueChars < 4) {
+                return { valid: false, reason: 'not enough variety' };
+            }
+            
+            const commonWords = [
+                'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
+                'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
+                'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she',
+                'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what',
+                'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me',
+                'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take',
+                'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other',
+                'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
+                'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way',
+                'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us',
+                'is', 'was', 'are', 'been', 'has', 'had', 'were', 'said', 'did', 'having'
+            ];
+            
+            const answerWords = answer.toLowerCase().split(/\s+/);
+            const hasCommonWord = answerWords.some(word => 
+                commonWords.includes(word.replace(/[.,!?;:]/, ''))
+            );
+            
+            if (!hasCommonWord) {
+                return { valid: false, reason: 'no recognizable words' };
+            }
+            
+            return { valid: true };
+        }
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            const answers = {
+                task1: document.getElementById('task1').value.trim(),
+                task2: document.getElementById('task2').value.trim(),
+                task3: document.getElementById('task3').value.trim(),
+                task4: document.getElementById('task4').value.trim(),
+                task5: document.getElementById('task5').value.trim(),
+                task6: document.getElementById('task6').value.trim(),
+                task7: document.getElementById('task7').value.trim(),
+                reflection: document.getElementById('reflection').value.trim()
+            };
+            
+            const validationMessage = document.getElementById('validationMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            let allValid = true;
+            let errorMessage = '';
+            
+            for (const [key, value] of Object.entries(answers)) {
+                const validation = validateAnswer(value);
+                if (!validation.valid) {
+                    allValid = false;
+                    const taskNum = key === 'reflection' ? 'Reflection' : key.replace('task', 'Task ').toUpperCase();
+                    
+                    switch (validation.reason) {
+                        case 'empty':
+                            errorMessage = `${taskNum} is empty. Please complete all tasks.`;
+                            break;
+                        case 'too short':
+                            errorMessage = `${taskNum} is too short. Please write more (at least 10 characters).`;
+                            break;
+                        case 'not enough words':
+                            errorMessage = `${taskNum} needs more words. Please write at least 3 words.`;
+                            break;
+                        case 'repeating characters':
+                            errorMessage = `${taskNum} contains repeating characters. Please write genuine content.`;
+                            break;
+                        case 'repeating words':
+                            errorMessage = `${taskNum} contains repeating words. Please write genuine content.`;
+                            break;
+                        case 'not enough variety':
+                            errorMessage = `${taskNum} doesn't have enough variety. Please use different words.`;
+                            break;
+                        case 'no recognizable words':
+                            errorMessage = `${taskNum} doesn't contain recognizable English words. Please write genuine answers.`;
+                            break;
+                    }
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.textContent = errorMessage;
+                validationMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+            
+            validationMessage.style.display = 'none';
+            
+            const formData = new FormData();
+            formData.append('studentName', studentName);
+            formData.append('assignmentTitle', 'Year 7 - Punctuation Mastery: Commas, Apostrophes & Speech Marks');
+            formData.append('yearGroup', 'Year-7');
+            formData.append('subject', 'English-Vocabulary-SPaG');
+            
+            let fileContent = `YEAR 7 - PUNCTUATION MASTERY: COMMAS, APOSTROPHES & SPEECH MARKS\n`;
+            fileContent += `Student: ${studentName}\n`;
+            fileContent += `Year Group: ${studentClass}\n`;
+            fileContent += `Submitted: ${new Date().toLocaleString('en-GB')}\n`;
+            fileContent += `\n${'='.repeat(60)}\n\n`;
+            
+            const taskTitles = {
+                task1: 'TASK 1: Add Commas',
+                task2: 'TASK 2: Apostrophes - Contractions',
+                task3: 'TASK 3: Apostrophes - Possession',
+                task4: 'TASK 4: Fix Apostrophe Mistakes',
+                task5: 'TASK 5: Add Speech Marks',
+                task6: 'TASK 6: Fix All Punctuation',
+                task7: 'TASK 7: Create Your Own',
+                reflection: 'REFLECTION: Punctuation'
+            };
+            
+            Object.entries(answers).forEach(([key, value]) => {
+                fileContent += `${taskTitles[key]}\n${'-'.repeat(60)}\n${value}\n\n`;
+            });
+            
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            formData.append('file', blob, `${studentName.replace(/\s+/g, '_')}_Punctuation_Mastery.txt`);
+            formData.append('keyStage', 'resources');
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('submissionForm').reset();
+                    Object.keys(answers).forEach(key => {
+                        document.getElementById(key).value = '';
+                    });
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    validationMessage.textContent = 'Submission failed. Please try again.';
+                    validationMessage.style.display = 'block';
+                }
+            } catch (error) {
+                validationMessage.textContent = 'Network error. Please check your connection and try again.';
+                validationMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
