@@ -1,5 +1,6 @@
 const { google } = require('googleapis');
 const Busboy = require('busboy');
+const { Readable } = require('stream');
 
 // Folder ID mapping from environment variables
 const FOLDER_IDS = {
@@ -34,22 +35,38 @@ function getDriveClient() {
 function parseMultipartForm(event) {
     return new Promise((resolve, reject) => {
         const contentType = event.headers['content-type'] || event.headers['Content-Type'];
+        if (!contentType || !contentType.includes('multipart/form-data')) {
+            reject(new Error('Invalid content type'));
+            return;
+        }
+        
         const busboy = Busboy({ headers: { 'content-type': contentType } });
         const result = {
             file: null,
             fields: {}
         };
         
+        let fileProcessed = false;
+        
         busboy.on('file', (fieldname, file, info) => {
             const { filename, encoding, mimeType } = info;
             const chunks = [];
-            file.on('data', (chunk) => chunks.push(chunk));
+            
+            file.on('data', (chunk) => {
+                chunks.push(chunk);
+            });
+            
             file.on('end', () => {
                 result.file = {
                     buffer: Buffer.concat(chunks),
-                    filename,
-                    mimetype: mimeType
+                    filename: filename || 'upload',
+                    mimetype: mimeType || 'application/octet-stream'
                 };
+                fileProcessed = true;
+            });
+            
+            file.on('error', (err) => {
+                reject(new Error(`File stream error: ${err.message}`));
             });
         });
         
@@ -58,17 +75,37 @@ function parseMultipartForm(event) {
         });
         
         busboy.on('finish', () => {
+            if (!fileProcessed && !result.file) {
+                reject(new Error('No file was processed'));
+                return;
+            }
             resolve(result);
         });
         
-        busboy.on('error', reject);
+        busboy.on('error', (err) => {
+            reject(new Error(`Busboy error: ${err.message}`));
+        });
         
-        // Convert body to buffer
-        const body = event.isBase64Encoded 
-            ? Buffer.from(event.body, 'base64')
-            : Buffer.from(event.body, 'utf8');
+        // Convert body to buffer - handle different encodings
+        let body;
+        if (event.body) {
+            if (event.isBase64Encoded) {
+                body = Buffer.from(event.body, 'base64');
+            } else if (typeof event.body === 'string') {
+                body = Buffer.from(event.body, 'binary');
+            } else if (Buffer.isBuffer(event.body)) {
+                body = event.body;
+            } else {
+                body = Buffer.from(JSON.stringify(event.body), 'utf8');
+            }
+        } else {
+            reject(new Error('No body in request'));
+            return;
+        }
         
-        busboy.end(body);
+        // Write body to busboy
+        busboy.write(body);
+        busboy.end();
     });
 }
 
@@ -167,9 +204,13 @@ exports.handler = async (event, context) => {
             description: `Uploaded by: ${studentName}${assignmentTitle ? ` | Assignment: ${assignmentTitle}` : ''}`
         };
         
+        // Convert buffer to stream for Google Drive API (it expects a stream)
+        const fileBuffer = Buffer.isBuffer(file.buffer) ? file.buffer : Buffer.from(file.buffer);
+        const fileStream = Readable.from(fileBuffer);
+        
         const media = {
-            mimeType: file.mimetype,
-            body: file.buffer
+            mimeType: file.mimetype || 'application/octet-stream',
+            body: fileStream
         };
         
         const response = await drive.files.create({
