@@ -139,14 +139,28 @@ function parseMultipartForm(event) {
         });
         
         // Convert body to buffer
+        // Netlify Functions base64-encode binary data, so we need to handle that
         let bodyBuffer;
         try {
             if (event.body) {
                 if (event.isBase64Encoded) {
+                    // Netlify base64-encodes binary data
                     bodyBuffer = Buffer.from(event.body, 'base64');
                 } else if (typeof event.body === 'string') {
-                    // For multipart, body should be binary
-                    bodyBuffer = Buffer.from(event.body, 'binary');
+                    // Try to detect if it's already base64 (multipart data often is)
+                    // If it contains non-printable chars, it's likely binary and should be base64 decoded
+                    try {
+                        // Try base64 first for multipart data
+                        bodyBuffer = Buffer.from(event.body, 'base64');
+                        // Verify it's valid base64 by checking if it decodes to something reasonable
+                        if (bodyBuffer.length === 0 && event.body.length > 0) {
+                            // Fallback to binary if base64 decode resulted in empty buffer
+                            bodyBuffer = Buffer.from(event.body, 'binary');
+                        }
+                    } catch (e) {
+                        // If base64 fails, try binary
+                        bodyBuffer = Buffer.from(event.body, 'binary');
+                    }
                 } else if (Buffer.isBuffer(event.body)) {
                     bodyBuffer = event.body;
                 } else {
@@ -157,35 +171,15 @@ function parseMultipartForm(event) {
                 return;
             }
             
-            // Write to busboy in chunks to avoid memory issues
-            const chunkSize = 64 * 1024; // 64KB chunks
-            let offset = 0;
-            
-            const writeChunk = () => {
-                if (hasError) return;
-                
-                if (offset < bodyBuffer.length) {
-                    const chunk = bodyBuffer.slice(offset, Math.min(offset + chunkSize, bodyBuffer.length));
-                    try {
-                        busboy.write(chunk);
-                        offset += chunkSize;
-                        // Use setImmediate to avoid blocking
-                        setImmediate(writeChunk);
-                    } catch (writeErr) {
-                        hasError = true;
-                        reject(new Error(`Failed to write to busboy: ${writeErr.message}`));
-                    }
-                } else {
-                    try {
-                        busboy.end();
-                    } catch (endErr) {
-                        hasError = true;
-                        reject(new Error(`Failed to end busboy: ${endErr.message}`));
-                    }
-                }
-            };
-            
-            writeChunk();
+            // Write entire body to busboy at once (synchronous)
+            // Busboy needs the complete multipart data to parse correctly
+            try {
+                busboy.write(bodyBuffer);
+                busboy.end();
+            } catch (writeErr) {
+                hasError = true;
+                reject(new Error(`Failed to write to busboy: ${writeErr.message}`));
+            }
         } catch (parseError) {
             hasError = true;
             reject(new Error(`Failed to parse request body: ${parseError.message}`));
