@@ -16,7 +16,7 @@
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             min-height: 100vh;
             padding: 2rem;
-            color: #1f2937;
+            colour: #1f2937;
         }
 
         .container {
@@ -30,9 +30,9 @@
 
         .header {
             background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: white;
+            colour: white;
             padding: 2.5rem 2rem;
-            text-align: center;
+            text-align: centre;
         }
 
         .header h1 {
@@ -43,7 +43,7 @@
 
         .header .meta {
             display: flex;
-            justify-content: center;
+            justify-content: centre;
             gap: 2rem;
             margin-top: 1rem;
             font-size: 0.95rem;
@@ -63,14 +63,14 @@
         }
 
         .intro-box h2 {
-            color: #1e3a8a;
+            colour: #1e3a8a;
             margin-bottom: 0.75rem;
             font-size: 1.3rem;
         }
 
         .intro-box p {
             line-height: 1.7;
-            color: #1e40af;
+            colour: #1e40af;
         }
 
         .section {
@@ -78,7 +78,7 @@
         }
 
         .section h2 {
-            color: #1e3a8a;
+            colour: #1e3a8a;
             font-size: 1.5rem;
             margin-bottom: 1.25rem;
             padding-bottom: 0.5rem;
@@ -88,7 +88,7 @@
         .section p {
             line-height: 1.8;
             margin-bottom: 1rem;
-            color: #374151;
+            colour: #374151;
         }
 
         .method-box {
@@ -100,13 +100,13 @@
         }
 
         .method-box h4 {
-            color: #065f46;
+            colour: #065f46;
             margin-bottom: 0.75rem;
             font-size: 1.1rem;
         }
 
         .method-box p {
-            color: #047857;
+            colour: #047857;
             line-height: 1.6;
             margin-bottom: 0.5rem;
         }
@@ -120,14 +120,14 @@
         }
 
         .example-box strong {
-            color: #5b21b6;
+            colour: #5b21b6;
             display: block;
             margin-bottom: 0.75rem;
             font-size: 1.05rem;
         }
 
         .example-box p {
-            color: #6b21a8;
+            colour: #6b21a8;
             line-height: 1.7;
             margin-bottom: 0.5rem;
             font-family: 'Courier New', monospace;
@@ -142,14 +142,14 @@
         }
 
         .question-box .question-number {
-            color: #1e3a8a;
+            colour: #1e3a8a;
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 0.75rem;
         }
 
         .question-box .question-text {
-            color: #1f2937;
+            colour: #1f2937;
             font-size: 1.05rem;
             margin-bottom: 1rem;
             line-height: 1.6;
@@ -164,13 +164,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 1rem;
             resize: vertical;
-            transition: border-color 0.3s;
+            transition: border-colour 0.3s;
             line-height: 1.6;
         }
 
         textarea:focus {
             outline: none;
-            border-color: #3b82f6;
+            border-colour: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
@@ -183,14 +183,14 @@
         }
 
         .tips-box strong {
-            color: #92400e;
+            colour: #92400e;
             display: block;
             margin-bottom: 0.5rem;
         }
 
         .tips-box ul {
             margin-left: 1.5rem;
-            color: #78350f;
+            colour: #78350f;
         }
 
         .tips-box li {
@@ -207,7 +207,7 @@
         }
 
         .submit-section h2 {
-            color: #1e3a8a;
+            colour: #1e3a8a;
             margin-bottom: 1.5rem;
             font-size: 1.4rem;
         }
@@ -218,7 +218,7 @@
 
         .form-group label {
             display: block;
-            color: #1e40af;
+            colour: #1e40af;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
@@ -229,23 +229,23 @@
             border: 2px solid #cbd5e1;
             border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: border-colour 0.3s;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #3b82f6;
+            border-colour: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .form-group input[readonly] {
             background: #f3f4f6;
-            color: #6b7280;
+            colour: #6b7280;
         }
 
         .submit-btn {
             background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: white;
+            colour: white;
             padding: 1rem 2.5rem;
             border: none;
             border-radius: 8px;
@@ -264,7 +264,7 @@
         .validation-message {
             background: #fee2e2;
             border: 2px solid #ef4444;
-            color: #991b1b;
+            colour: #991b1b;
             padding: 1rem;
             border-radius: 8px;
             margin-top: 1rem;
@@ -274,7 +274,7 @@
         .success-message {
             background: #d1fae5;
             border: 2px solid #10b981;
-            color: #065f46;
+            colour: #065f46;
             padding: 1rem;
             border-radius: 8px;
             margin-top: 1rem;
@@ -625,7 +625,7 @@
                     Object.keys(answers).forEach(key => {
                         document.getElementById(key).value = '';
                     });
-                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    window.scrollTo({ top: document.body.scrollHeight, behaviour: 'smooth' });
                 } else {
                     validationMessage.textContent = 'Submission failed. Please try again.';
                     validationMessage.style.display = 'block';
