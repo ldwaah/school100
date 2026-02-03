@@ -10,7 +10,7 @@ const FOLDER_IDS = {
 };
 
 // Initialize Google Drive client
-function getDriveClient() {
+async function getDriveClient() {
     try {
         if (!process.env.GOOGLE_CREDENTIALS || !process.env.GOOGLE_TOKEN) {
             throw new Error('Google Drive credentials not configured');
@@ -38,14 +38,16 @@ function getDriveClient() {
         const oauth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris?.[0] || 'http://localhost');
         oauth2Client.setCredentials(token);
         
-        // Refresh token if expired
+        // Refresh token if expired (synchronously before API calls)
         if (token.expiry_date && token.expiry_date < Date.now() && token.refresh_token) {
-            oauth2Client.refreshAccessToken().then(({ credentials: newCredentials }) => {
-                // Note: In production, you'd want to update the stored token
+            try {
+                const { credentials: newCredentials } = await oauth2Client.refreshAccessToken();
                 oauth2Client.setCredentials({ ...token, ...newCredentials });
-            }).catch(err => {
+                console.log('Token refreshed successfully');
+            } catch (err) {
                 console.error('Token refresh failed:', err);
-            });
+                throw new Error(`Google Drive authentication failed: ${err.message}. Please check your GOOGLE_TOKEN environment variable.`);
+            }
         }
         
         return google.drive({ version: 'v3', auth: oauth2Client });
@@ -111,25 +113,25 @@ function parseMultipartForm(event) {
         });
         
         // Convert body to buffer - handle different encodings
-        let body;
+        let bodyBuffer;
         if (event.body) {
             if (event.isBase64Encoded) {
-                body = Buffer.from(event.body, 'base64');
+                bodyBuffer = Buffer.from(event.body, 'base64');
             } else if (typeof event.body === 'string') {
-                body = Buffer.from(event.body, 'binary');
+                bodyBuffer = Buffer.from(event.body, 'binary');
             } else if (Buffer.isBuffer(event.body)) {
-                body = event.body;
+                bodyBuffer = event.body;
             } else {
-                body = Buffer.from(JSON.stringify(event.body), 'utf8');
+                bodyBuffer = Buffer.from(JSON.stringify(event.body), 'utf8');
             }
         } else {
             reject(new Error('No body in request'));
             return;
         }
         
-        // Write body to busboy
-        busboy.write(body);
-        busboy.end();
+        // Create a readable stream from the buffer and pipe to busboy
+        const bodyStream = Readable.from(bodyBuffer);
+        bodyStream.pipe(busboy);
     });
 }
 
@@ -221,7 +223,7 @@ exports.handler = async (event, context) => {
         newFileName += `_${baseName}.${ext}`;
         
         // Upload to Google Drive
-        const drive = getDriveClient();
+        const drive = await getDriveClient();
         const fileMetadata = {
             name: newFileName,
             parents: [folderId],
