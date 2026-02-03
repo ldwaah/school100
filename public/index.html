@@ -3,69 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School100 - EvolveOne</title>
+    <title>School100 - Academic Resources</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resources-styles.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>School100</h1>
-            <p class="subtitle">Upload your work directly - no sign-in required</p>
+            <p class="subtitle">Academic resources for independent learning</p>
         </header>
 
         <main>
-            <div class="cards-grid">
-                <!-- KS3 Upload Card -->
-                <div class="card ks3-card">
-                    <div class="card-header">
-                        <h2>KS3 Students</h2>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="resourceSearch" placeholder="🔍 Search resources by name, subject, or topic..." 
+                       autocomplete="off">
+            </div>
+
+            <!-- Year Group Selection -->
+            <div class="subjects-grid">
+                <!-- Year 7 -->
+                <div class="subject-card english-card" onclick="showYearGroupResources('Year-7')">
+                    <div class="subject-header">
+                        <div class="year-icon">📚</div>
+                        <div>
+                            <h2>Year 7</h2>
+                            <span class="resource-count" id="year7-count">Loading...</span>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>Year 7, 8 & 9 students upload your work here.</p>
-                        <button class="btn btn-primary" onclick="openUploadModal('ks3')">
-                            Upload KS3 Work
+                    <div class="subject-categories">
+                        <button class="category-btn">
+                            View All Year 7 Resources
                             <span class="arrow">→</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- KS4 Upload Card -->
-                <div class="card ks4-card">
-                    <div class="card-header">
-                        <h2>KS4 Students</h2>
+                <!-- Year 8 -->
+                <div class="subject-card maths-card" onclick="showYearGroupResources('Year-8')">
+                    <div class="subject-header">
+                        <div class="year-icon">📖</div>
+                        <div>
+                            <h2>Year 8</h2>
+                            <span class="resource-count" id="year8-count">Loading...</span>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>Year 10 & 11 students upload your work here.</p>
-                        <button class="btn btn-primary" onclick="openUploadModal('ks4')">
-                            Upload KS4 Work
+                    <div class="subject-categories">
+                        <button class="category-btn">
+                            View All Year 8 Resources
                             <span class="arrow">→</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- 100% Resources Card -->
-                <div class="card resources-card">
-                    <div class="card-header">
-                        <h2>100% Resources</h2>
+                <!-- Year 9 -->
+                <div class="subject-card sport-card" onclick="showYearGroupResources('Year-9')">
+                    <div class="subject-header">
+                        <div class="year-icon">📝</div>
+                        <div>
+                            <h2>Year 9</h2>
+                            <span class="resource-count" id="year9-count">Loading...</span>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>Access academic resources for English, Maths, Sport, and King's Trust.</p>
-                        <button class="btn btn-secondary" onclick="window.location.href='resources.html'">
-                            View Resources
+                    <div class="subject-categories">
+                        <button class="category-btn">
+                            View All Year 9 Resources
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Year 10 -->
+                <div class="subject-card trust-card" onclick="showYearGroupResources('Year-10')">
+                    <div class="subject-header">
+                        <div class="year-icon">🎓</div>
+                        <div>
+                            <h2>Year 10</h2>
+                            <span class="resource-count" id="year10-count">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="subject-categories">
+                        <button class="category-btn">
+                            View All Year 10 Resources
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Year 11 -->
+                <div class="subject-card trust-card" onclick="showYearGroupResources('Year-11')">
+                    <div class="subject-header">
+                        <div class="year-icon">🏆</div>
+                        <div>
+                            <h2>Year 11</h2>
+                            <span class="resource-count" id="year11-count">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="subject-categories">
+                        <button class="category-btn">
+                            View All Year 11 Resources
                             <span class="arrow">→</span>
                         </button>
                     </div>
                 </div>
             </div>
 
+            <!-- Resources Display Area -->
+            <div id="resources-display" class="resources-display" style="display: none;">
+                <div class="resources-header">
+                    <h3 id="resources-title">Resources</h3>
+                    <button class="close-btn" onclick="closeResources()">×</button>
+                </div>
+                <div id="resources-list" class="resources-list">
+                    <!-- Resources will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Help Section -->
             <div class="help-section">
-                <h3>Need Help?</h3>
+                <h3>How to Use</h3>
                 <ul class="help-list">
-                    <li><strong>KS3</strong> refers to Key Stage 3 (Years 7-9)</li>
-                    <li><strong>KS4</strong> refers to Key Stage 4 (Years 10-11)</li>
-                    <li>You can upload PDFs, Word documents, PowerPoints, images, and more</li>
-                    <li>Please enter your name so we can identify your work</li>
-                    <li>Maximum file size is 50MB per upload</li>
+                    <li>Click on any year group card to view all available resources</li>
+                    <li>Use the search bar to quickly find specific topics or subjects</li>
+                    <li>Resources are organised by subject: English, Maths, Sport, and King's Trust</li>
+                    <li>All resources are interactive and can be completed online</li>
                     <li><strong>Tip:</strong> Press ESC to close any open windows</li>
                 </ul>
             </div>
@@ -76,81 +138,62 @@
         </footer>
     </div>
 
-    <!-- Upload Modal -->
-    <div id="uploadModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Upload Your Work</h2>
-                <button class="close-btn" onclick="closeUploadModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="uploadForm">
-                    <input type="hidden" id="keyStage" name="keyStage">
-                    
-                    <div class="form-group">
-                        <label for="studentName">Your Name *</label>
-                        <input type="text" id="studentName" name="studentName" required 
-                               placeholder="e.g. John Smith">
-                    </div>
+    <script src="resources-app.js"></script>
+    <script>
+        // Add search functionality to home page
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('resourceSearch');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase().trim();
+                    if (searchTerm.length > 0) {
+                        // If resources are displayed, filter them
+                        const resourcesDisplay = document.getElementById('resources-display');
+                        if (resourcesDisplay && resourcesDisplay.style.display !== 'none') {
+                            filterResources(searchTerm);
+                        } else {
+                            // Otherwise, show year groups that match
+                            filterYearGroups(searchTerm);
+                        }
+                    } else {
+                        // Reset to show all year groups
+                        document.querySelectorAll('.subject-card').forEach(card => {
+                            card.style.display = '';
+                        });
+                    }
+                });
+            }
+        });
 
-                    <div class="form-group">
-                        <label for="assignmentTitle">Assignment Title (optional)</label>
-                        <input type="text" id="assignmentTitle" name="assignmentTitle" 
-                               placeholder="e.g. Geography Project">
-                    </div>
+        function filterYearGroups(searchTerm) {
+            const yearGroups = ['Year 7', 'Year 8', 'Year 9', 'Year 10', 'Year 11'];
+            document.querySelectorAll('.subject-card').forEach((card, index) => {
+                const yearName = yearGroups[index];
+                if (yearName.toLowerCase().includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
 
-                    <div class="upload-area" id="uploadArea">
-                        <div class="upload-icon">📎</div>
-                        <p class="upload-text">Drag and drop your file here</p>
-                        <p class="upload-subtext">or</p>
-                        <label for="fileInput" class="btn btn-file">
-                            Choose File
-                        </label>
-                        <input type="file" id="fileInput" name="file" style="display: none;" required>
-                        <p class="upload-info">Accepted: PDF, Word, PowerPoint, Excel, Images (Max 50MB)</p>
-                    </div>
-
-                    <div id="filePreview" class="file-preview" style="display: none;">
-                        <p><strong>Selected file:</strong> <span id="fileName"></span></p>
-                        <p><strong>Size:</strong> <span id="fileSize"></span></p>
-                    </div>
-
-                    <div id="uploadProgress" class="progress-container" style="display: none;">
-                        <div class="progress-bar" id="progressBar"></div>
-                        <p class="progress-text" id="progressText">Uploading...</p>
-                    </div>
-
-                    <div id="uploadResult" class="upload-result" style="display: none;"></div>
-
-                    <button type="submit" class="btn btn-primary btn-submit">
-                        Upload File
-                    </button>
-                    
-                    <div id="uploadHistory" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-                        <h4 style="color: white; margin-bottom: 0.75rem; font-size: 0.95rem;">Recent Uploads</h4>
-                        <div id="historyList" style="max-height: 150px; overflow-y: auto;"></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Resources Modal -->
-    <div id="resourcesModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>King Trust Resources</h2>
-                <button class="close-btn" onclick="closeResourcesModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="resourcesList" class="resources-list">
-                    <p class="loading-text">Loading resources...</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
+        function filterResources(searchTerm) {
+            const resourcesList = document.getElementById('resources-list');
+            if (!resourcesList) return;
+            
+            const resourceItems = resourcesList.querySelectorAll('.resource-item');
+            let foundCount = 0;
+            
+            resourceItems.forEach(item => {
+                const resourceName = item.querySelector('h4')?.textContent.toLowerCase() || '';
+                if (resourceName.includes(searchTerm)) {
+                    item.style.display = '';
+                    foundCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
-
