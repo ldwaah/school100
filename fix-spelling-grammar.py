@@ -86,6 +86,46 @@ SPELLING_FIXES = {
     r'\bneccessary\b': 'necessary',
     r'\bNeccessary\b': 'Necessary',
     
+    # More typos
+    r'\bnaratives\b': 'narratives',
+    r'\bNaratives\b': 'Narratives',
+    r'\bparalel\b': 'parallel',
+    r'\bParalel\b': 'Parallel',
+    r'\bbegining-midle-end\b': 'beginning-middle-end',
+    r'\bBegining-midle-end\b': 'Beginning-middle-end',
+    r'\balot\b': 'a lot',
+    r'\bAlot\b': 'A lot',
+    
+    # Common homophone errors (be careful with context)
+    r'\bloose\b': 'lose',  # When it's "loose" meaning to lose something (context-dependent)
+    r'\bLoose\b': 'Lose',
+    # Note: "loose" as in "not tight" is correct, but we'll fix obvious errors
+    r'\bhere lots\b': 'hear lots',
+    r'\bHere lots\b': 'Hear lots',
+    r'\bwear they\b': 'where they',
+    r'\bWear they\b': 'Where they',
+    r'\bIts a\b': "It's a",  # Contraction
+    r'\bIts amazing\b': "It's amazing",
+    r'\bTheir going\b': "They're going",
+    r'\bTheir!\b': "there!",  # At end of sentence
+    r'\bTheir\b': 'their',  # Keep "their" as possessive, but fix "They're going"
+    
+    # Fix "Its" when it should be "It's" (contraction)
+    # Be careful - only fix when followed by common words
+    r'\bIts a\b': "It's a",
+    r'\bIts amazing\b': "It's amazing",
+    r'\bIts definitely\b': "It's definitely",
+    r'\bIts important\b': "It's important",
+    r'\bIts time\b': "It's time",
+    r'\bIts not\b': "It's not",
+    r'\bIts the\b': "It's the",
+    
+    # Fix "Their" when it should be "They're" (contraction)
+    r'\bTheir going\b': "They're going",
+    r'\bTheir coming\b': "They're coming",
+    r'\bTheir here\b': "They're here",
+    r'\bTheir there\b': "They're there",
+    
     # Contractions
     r'\byou\'l\b': "you'll",
     r'\bYou\'l\b': "You'll",
