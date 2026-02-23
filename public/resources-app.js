@@ -3,6 +3,31 @@
 // Resource structure and metadata
 let allResources = [];
 
+// Display title overrides (Year 11 and any broken names). Key: yearGroup/folder/filename (no path)
+const RESOURCE_DISPLAY_TITLES = {
+    'Year-11/English-Reading/exam_preparation_comparison.html': 'Exam Preparation: Comparative Reading',
+    'Year-11/Maths-Error-Spotting/exam_preparation_error_spotting_calculat.html': 'Exam Preparation: Error Spotting – Calculations',
+    'Year-11/English-Vocabulary-SPaG/exam_techniques_spag.html': 'Exam Techniques: SPaG',
+    'Year-11/English-Vocabulary-SPaG/revision_vocabulary_and_spag.html': 'Revision: Vocabulary & SPaG'
+};
+
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (t) {
+        return t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
+    });
+}
+
+/** Return display title: Title Case, colon formatting (e.g. Exam Preparation: Algebra). */
+function getResourceDisplayTitle(yearGroup, subjectFolder, filename) {
+    const key = yearGroup + '/' + subjectFolder + '/' + filename;
+    if (RESOURCE_DISPLAY_TITLES[key]) return RESOURCE_DISPLAY_TITLES[key];
+    const base = filename.replace(/\.html$/, '').replace(/^\d+_/, '');
+    const parts = base.split('_').filter(Boolean).map(function (p) { return toTitleCase(p); });
+    if (parts.length <= 1) return parts[0] || base;
+    if (parts.length === 2) return parts[0] + ': ' + parts[1];
+    return parts[0] + ' ' + parts[1] + ': ' + parts.slice(2).join(' ');
+}
+
 // Load resources on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadResourceCounts();
@@ -156,6 +181,7 @@ async function showYearGroupResources(yearGroup) {
         }
         
         if (data.success) {
+            const yearNum = yearGroup.replace('Year-', '');
             let html = '<div class="accordion-container">';
             
             data.subjects.forEach((subject, index) => {
@@ -174,12 +200,15 @@ async function showYearGroupResources(yearGroup) {
                         <div class="accordion-content" id="${subjectId}">
                             ${hasResources ? `
                                 <div class="resources-grid">
-                                    ${subject.resources.map(resource => `
-                                        <div class="resource-item" onclick="window.open('/resources/files/${yearGroup}/${subject.folder}/${resource}', '_blank')">
-                                            <h4>${resource.replace(/\.html$/, '').replace(/_/g, ' ').replace(/^\d+_/, '')}</h4>
+                                    ${subject.resources.map(resource => {
+                                        const resourceUrl = '/resources/files/' + yearGroup + '/' + subject.folder + '/' + resource + '?year=' + yearNum;
+                                        const displayTitle = getResourceDisplayTitle(yearGroup, subject.folder, resource);
+                                        return `
+                                        <div class="resource-item" data-year="${yearNum}" onclick="window.open('${resourceUrl}', '_blank')">
+                                            <h4>${displayTitle}</h4>
                                             <p style="font-size: 14px; color: #6b7280; margin-top: 5px;">Click to open resource</p>
                                         </div>
-                                    `).join('')}
+                                    `; }).join('')}
                                 </div>
                             ` : `
                                 <div class="empty-subject-state">
